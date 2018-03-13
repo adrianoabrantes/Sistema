@@ -3,7 +3,6 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.org.apache.xml.internal.serialize.Method;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -39,6 +38,7 @@ public class LoginController implements Initializable {
         lblStatusLogin.setVisible(false);
     }
 
+    @FXML
     private void EntrarEventoCick(ActionEvent event) {
         if (txtUsuario.getText().isEmpty()) {
             lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
