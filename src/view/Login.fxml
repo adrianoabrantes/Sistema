@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Pane layoutX="103.0" layoutY="72.0" prefHeight="257.0" prefWidth="395.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <VBox layoutX="62.0" layoutY="26.0" prefHeight="206.0" prefWidth="271.0">
+               <children>
+                  <Label text="Sistema Gerencial">
+                     <VBox.margin>
+                        <Insets bottom="40.0" left="70.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtUsuario" labelFloat="true" onKeyPressed="#keyPressed" promptText="Usuario ...">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXPasswordField fx:id="txtSenha" labelFloat="true" onKeyPressed="#keyPressed" promptText="Senha ...">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXPasswordField>
+                  <Label fx:id="lblStatusLogin" text="Status Login">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="44.0" prefWidth="271.0">
+                     <children>
+                        <JFXButton fx:id="btnEntrar" onAction="#EntrarEventoCick" prefWidth="90.0" text="Entrar">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="btnSair" onAction="#SairEventoClick" prefWidth="90.0" text="Sair">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <effect>
+            <DropShadow color="#4b85e3" />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
