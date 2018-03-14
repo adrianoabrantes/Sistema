@@ -14,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import sistema.Login;
-import sistema.LoginOld;
 
 /**
  * FXML Controller class
@@ -60,7 +59,7 @@ public class LoginController implements Initializable,ControlledScreen {
             lblStatusLogin.setTextFill(Paint.valueOf("#0000FF"));
             lblStatusLogin.setText("Logado");
             lblStatusLogin.setVisible(true);
-            
+            myController.setScreen(Login.screenHome);
         }
     }
 
@@ -74,7 +73,7 @@ public class LoginController implements Initializable,ControlledScreen {
         System.exit(0);
     }
 
-    @Override
+   @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
     }
