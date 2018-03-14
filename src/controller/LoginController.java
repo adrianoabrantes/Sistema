@@ -1,5 +1,7 @@
 package controller;
 
+import view.ScreensController;
+import view.ControlledScreen;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -11,14 +13,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
+import sistema.Login;
+import sistema.LoginOld;
 
 /**
  * FXML Controller class
  *
  * @author adrianoabrantesdeandrade
  */
-public class LoginController implements Initializable {
+public class LoginController implements Initializable,ControlledScreen {
 
+    ScreensController myController;
     @FXML
     private JFXTextField txtUsuario;
     @FXML
@@ -51,10 +56,11 @@ public class LoginController implements Initializable {
             lblStatusLogin.setText("Campo Senha nao podem estar vazios.");
             lblStatusLogin.setVisible(true);
             txtSenha.requestFocus();
-        }else{
+        } else {
             lblStatusLogin.setTextFill(Paint.valueOf("#0000FF"));
             lblStatusLogin.setText("Logado");
             lblStatusLogin.setVisible(true);
+            
         }
     }
 
@@ -63,9 +69,13 @@ public class LoginController implements Initializable {
         lblStatusLogin.setVisible(false);
     }
 
-     @FXML
+    @FXML
     private void SairEventoClick(ActionEvent event) {
-        
+        System.exit(0);
     }
 
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
+    }
 }
