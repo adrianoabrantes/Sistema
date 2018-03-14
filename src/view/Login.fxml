@@ -53,7 +53,7 @@
             </VBox>
          </children>
          <effect>
-            <DropShadow color="#4b85e3" />
+            <DropShadow color="#4d83e3" height="160.0" radius="79.5" spread="0.3" width="160.0" />
          </effect>
       </Pane>
    </children>

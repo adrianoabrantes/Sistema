@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <Label layoutX="283.0" layoutY="164.0" text="Home" />
-      <Button fx:id="btnSair" layoutX="271.0" layoutY="223.0" mnemonicParsing="false" onAction="#EventoSairClick" text="Sair" />
+      <Button fx:id="btnSair" layoutX="544.0" layoutY="343.0" mnemonicParsing="false" onAction="#EventoSairClick" text="Sair" />
+      <JFXToolbar layoutX="8.0" layoutY="7.0" prefHeight="43.0" prefWidth="585.0" />
    </children>
 </AnchorPane>
