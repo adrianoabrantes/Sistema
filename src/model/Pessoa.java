@@ -24,6 +24,10 @@ public class Pessoa {
         this.senha = senha;
     }
 
+    public Pessoa() {
+
+    }
+
     public String getSenha() {
         return senha;
     }
@@ -56,4 +60,7 @@ public class Pessoa {
         this.idade = idade;
     }
 
+    public void mostraPessoas() {
+        System.out.printf("ID: %04d\nNome: %s\nIdade: %d\nSenha: %s\n", id, nome, idade, senha);
+    }
 }
