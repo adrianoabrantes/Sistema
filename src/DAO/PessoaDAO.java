@@ -40,41 +40,81 @@ public class PessoaDAO {
         }
     }
 
-    public boolean alterarPessoa(Pessoa pessoa) {
-        String sql = "UPDATE pessoa SET nome=?, idade=?, senha=? WHERE id=?";
+    public boolean alterarPessoa(Pessoa pessoa) throws SQLException {
+        String select = "SELECT nome FROM pessoa WHERE nome=?";
+        PreparedStatement prepareStatement = con.prepareStatement(select);
+        prepareStatement.setString(1, pessoa.getNome());
+        ResultSet rs = prepareStatement.executeQuery();
 
-        try {
-            PreparedStatement prepareStatement = con.prepareStatement(sql);
-            prepareStatement.setString(1, pessoa.getNome());
-            prepareStatement.setInt(2, pessoa.getIdade());
-            prepareStatement.setString(3, pessoa.getSenha());
-            prepareStatement.setLong(4, pessoa.getId());
-            prepareStatement.execute();
-            prepareStatement.close();
-            con.close();
-            return true;
+        if (rs.next()) {
+            String sql = "UPDATE pessoa SET nome=?, idade=?, senha=? WHERE id=?";
 
-        } catch (SQLException ex) {
-            System.out.println("Erro ao alterar: " + pessoa.getNome() + " ERRO: " + ex);
-            return false;
+            try {
+                prepareStatement = con.prepareStatement(sql);
+                prepareStatement.setString(1, pessoa.getNome());
+                prepareStatement.setInt(2, pessoa.getIdade());
+                prepareStatement.setString(3, pessoa.getSenha());
+                prepareStatement.setLong(4, pessoa.getId());
+                prepareStatement.execute();
+                prepareStatement.close();
+                con.close();
+                return true;
+
+            } catch (SQLException ex) {
+                System.out.println("Erro ao alterar: " + pessoa.getNome() + " ERRO: " + ex);
+                prepareStatement.close();
+                con.close();
+                return false;
+            }
+
         }
-
+        return false;
     }
 
-    public boolean excluirPessoa(Pessoa pessoa) {
-        String sql = "DELETE FROM pessoa WHERE id=?";
+    public boolean excluirPessoa(Pessoa pessoa) throws SQLException {
 
-        try {
-            PreparedStatement prepareStatement = con.prepareStatement(sql);
-            prepareStatement.setInt(1, pessoa.getId());
-            prepareStatement.execute();
-            prepareStatement.close();
-            con.close();
-            return true;
+        String select = "SELECT nome FROM pessoa WHERE nome=?";
+        PreparedStatement prepareStatement = con.prepareStatement(select);
+        prepareStatement.setString(1, pessoa.getNome());
+        ResultSet rs = prepareStatement.executeQuery();
+        if (rs.next()) {
+            if (pessoa.getId() != 0) {
+                String sql = "DELETE FROM pessoa WHERE id=?";
 
-        } catch (SQLException ex) {
-            return false;
+                try {
+                    prepareStatement = con.prepareStatement(sql);
+                    prepareStatement.setInt(1, pessoa.getId());
+                    prepareStatement.execute();
+                    prepareStatement.close();
+                    con.close();
+                    return true;
+
+                } catch (SQLException ex) {
+                    return false;
+                }
+            } else if (!pessoa.getNome().isEmpty()) {
+
+                String sql = "DELETE FROM pessoa WHERE nome=?";
+
+                try {
+                    prepareStatement = con.prepareStatement(sql);
+                    prepareStatement.setString(1, pessoa.getNome());
+                    prepareStatement.execute();
+                    prepareStatement.close();
+                    con.close();
+                    return true;
+
+                } catch (SQLException ex) {
+                    prepareStatement.close();
+                    rs.close();
+                    con.close();
+                    return false;
+                }
+
+            }
         }
+        return false;
+
     }
 
     public List<Pessoa> getList() {
@@ -89,7 +129,7 @@ public class PessoaDAO {
                 Pessoa pessoa = new Pessoa();
                 pessoa.setId(resultSet.getInt("id"));
                 pessoa.setNome(resultSet.getString("nome"));
-                pessoa.setId(resultSet.getInt("idade"));
+                pessoa.setIdade(resultSet.getInt("idade"));
                 pessoa.setSenha(resultSet.getString("senha"));
                 pessoas.add(pessoa);
             }
@@ -112,7 +152,8 @@ public class PessoaDAO {
             prepareStatement.setString(1, pessoa.getNome());
             ResultSet resultado = prepareStatement.executeQuery();
             if (resultado.next()) {
-                con.close();
+                //prepareStatement.close();
+                //con.close();
                 return true;
             } else {
                 return false;

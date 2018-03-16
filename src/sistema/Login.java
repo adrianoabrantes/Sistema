@@ -27,6 +27,7 @@ public class Login extends Application {
         mainContainer.setScreen(Login.screen1ID);
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
+        
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.PessoaDAO;
 import view.ScreensController;
 import view.ControlledScreen;
 import com.jfoenix.controls.JFXButton;
@@ -13,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
+import javax.swing.JOptionPane;
+import model.Pessoa;
 import sistema.Login;
 
 /**
@@ -20,7 +23,7 @@ import sistema.Login;
  *
  * @author adrianoabrantesdeandrade
  */
-public class LoginController implements Initializable,ControlledScreen {
+public class LoginController implements Initializable, ControlledScreen {
 
     ScreensController myController;
     @FXML
@@ -56,10 +59,15 @@ public class LoginController implements Initializable,ControlledScreen {
             lblStatusLogin.setVisible(true);
             txtSenha.requestFocus();
         } else {
-            lblStatusLogin.setTextFill(Paint.valueOf("#0000FF"));
-            lblStatusLogin.setText("Logado");
-            lblStatusLogin.setVisible(true);
-            myController.setScreen(Login.screenHome);
+           if(validarUsuario(txtUsuario.getText(), txtSenha.getText())){
+               myController.setScreen(Login.screenHome);
+               
+           }else{
+               lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
+               lblStatusLogin.setVisible(true);
+               lblStatusLogin.setText("Usuario nao existe.");
+           }
+            
         }
     }
 
@@ -73,8 +81,21 @@ public class LoginController implements Initializable,ControlledScreen {
         System.exit(0);
     }
 
-   @Override
+    @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
+    }
+
+    public static boolean validarUsuario(String usuario, String senha) {
+        PessoaDAO dao = new PessoaDAO();
+        Pessoa pessoa = new Pessoa();
+        pessoa.setNome(usuario);
+        pessoa.setSenha(senha);
+
+        if (dao.existe(pessoa)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
