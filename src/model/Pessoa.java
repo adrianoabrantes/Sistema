@@ -8,32 +8,32 @@ public class Pessoa {
 
     private int id;
     private String nome;
-    private int idade;
+    private String usuario;
     private String senha;
-
-    public Pessoa(String nome, int idade, String senha) {
-        this.nome = nome;
-        this.idade = idade;
-        this.senha = senha;
-    }
-
-    public Pessoa(int id, String nome, int idade, String senha) {
-        this.id = id;
-        this.nome = nome;
-        this.idade = idade;
-        this.senha = senha;
-    }
 
     public Pessoa() {
 
     }
 
-    public String getSenha() {
-        return senha;
+    public Pessoa(int id, String nome, String usuario, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.usuario = usuario;
+        this.senha = senha;
     }
 
-    public void setSenha(String senha) {
+    public Pessoa(String nome, String usuario, String senha) {
+        this.nome = nome;
+        this.usuario = usuario;
         this.senha = senha;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public int getId() {
@@ -52,15 +52,16 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public int getIdade() {
-        return idade;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public void mostraPessoas() {
-        System.out.printf("ID: %04d\nNome: %s\nIdade: %d\nSenha: %s\n", id, nome, idade, senha);
+        System.out.printf("ID: %04d\nNome: %s\nUsuario: %d\nSenha: %s\n", id, nome, usuario, senha);
     }
+
 }

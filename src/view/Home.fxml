@@ -11,6 +11,9 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
       <Button fx:id="btnSair" layoutX="544.0" layoutY="343.0" mnemonicParsing="false" onAction="#EventoSairClick" text="Sair" />
-      <JFXToolbar layoutX="8.0" layoutY="7.0" prefHeight="43.0" prefWidth="585.0" />
+      <JFXToolbar layoutX="8.0" layoutY="7.0" prefHeight="43.0" prefWidth="585.0">
+         <left>
+            <JFXButton fx:id="btnUsuarios" onAction="#eventoUsuariosClick" text="Usuarios" BorderPane.alignment="CENTER" />
+         </left></JFXToolbar>
    </children>
 </AnchorPane>

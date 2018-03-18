@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
-import javax.swing.JOptionPane;
 import model.Pessoa;
 import sistema.Login;
 
@@ -59,15 +58,15 @@ public class LoginController implements Initializable, ControlledScreen {
             lblStatusLogin.setVisible(true);
             txtSenha.requestFocus();
         } else {
-           if(validarUsuario(txtUsuario.getText(), txtSenha.getText())){
-               myController.setScreen(Login.screenHome);
-               
-           }else{
-               lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
-               lblStatusLogin.setVisible(true);
-               lblStatusLogin.setText("Usuario nao existe.");
-           }
-            
+            if (validarUsuario(txtUsuario.getText(), txtSenha.getText())) {
+                myController.setScreen(Login.screenHome);
+
+            } else {
+                lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
+                lblStatusLogin.setVisible(true);
+                lblStatusLogin.setText("Usuario ou senha invalido.");
+            }
+
         }
     }
 
@@ -89,10 +88,10 @@ public class LoginController implements Initializable, ControlledScreen {
     public static boolean validarUsuario(String usuario, String senha) {
         PessoaDAO dao = new PessoaDAO();
         Pessoa pessoa = new Pessoa();
-        pessoa.setNome(usuario);
+        pessoa.setUsuario(usuario);
         pessoa.setSenha(senha);
 
-        if (dao.existe(pessoa)) {
+        if (dao.login(pessoa)) {
             return true;
         } else {
             return false;

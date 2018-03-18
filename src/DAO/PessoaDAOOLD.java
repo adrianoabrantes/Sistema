@@ -13,21 +13,21 @@ import model.Pessoa;
  *
  * @author adrianoabrantesdeandrade
  */
-public class PessoaDAO {
+public class PessoaDAOOLD {
 
     private final Connection con;
 
-    public PessoaDAO() {
+    public PessoaDAOOLD() {
         this.con = new ConnectionFactory().getConnection();
     }
 
     public boolean salvarPessoa(Pessoa pessoa) {
-        String sql = "INSERT INTO pessoa (nome, usuario, senha) VALUES (?,?,?)";
+        String sql = "INSERT INTO pessoa (nome, idade, senha) VALUES (?,?,?)";
 
         try {
             PreparedStatement prepareStatement = con.prepareStatement(sql);
             prepareStatement.setString(1, pessoa.getNome());
-            prepareStatement.setString(2, pessoa.getUsuario());
+            //prepareStatement.setInt(2, pessoa.getIdade());
             prepareStatement.setString(3, pessoa.getSenha());
             prepareStatement.execute();
             prepareStatement.close();
@@ -52,7 +52,7 @@ public class PessoaDAO {
             try {
                 prepareStatement = con.prepareStatement(sql);
                 prepareStatement.setString(1, pessoa.getNome());
-                prepareStatement.setString(2, pessoa.getUsuario());
+                //prepareStatement.setInt(2, pessoa.getIdade());
                 prepareStatement.setString(3, pessoa.getSenha());
                 prepareStatement.setLong(4, pessoa.getId());
                 prepareStatement.execute();
@@ -129,7 +129,7 @@ public class PessoaDAO {
                 Pessoa pessoa = new Pessoa();
                 pessoa.setId(resultSet.getInt("id"));
                 pessoa.setNome(resultSet.getString("nome"));
-                pessoa.setUsuario(resultSet.getString("usuario"));
+                //pessoa.setIdade(resultSet.getInt("idade"));
                 pessoa.setSenha(resultSet.getString("senha"));
                 pessoas.add(pessoa);
             }
@@ -145,15 +145,15 @@ public class PessoaDAO {
     }
 
     public boolean existe(Pessoa pessoa) {
-        String sql = "SELECT usuario FROM pessoa WHERE usuario=?";
+        String sql = "SELECT nome FROM pessoa WHERE nome=?";
 
         try {
             PreparedStatement prepareStatement = con.prepareStatement(sql);
-            prepareStatement.setString(1, pessoa.getUsuario());
+            prepareStatement.setString(1, pessoa.getNome());
             ResultSet resultado = prepareStatement.executeQuery();
             if (resultado.next()) {
-                prepareStatement.close();
-                con.close();
+                //prepareStatement.close();
+                //con.close();
                 return true;
             } else {
                 return false;
@@ -166,26 +166,4 @@ public class PessoaDAO {
 
     }
 
-    public boolean login(Pessoa pessoa) {
-        String sql = "SELECT usuario,senha FROM pessoa WHERE usuario=? and senha=?";
-
-        try {
-            PreparedStatement prepareStatement = con.prepareStatement(sql);
-            prepareStatement.setString(1, pessoa.getUsuario());
-            prepareStatement.setString(2, pessoa.getSenha());
-            ResultSet resultado = prepareStatement.executeQuery();
-            if (resultado.next()) {
-                prepareStatement.close();
-                con.close();
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            System.out.println("ERRO: " + ex);
-            return false;
-
-        }
-
-    }
 }

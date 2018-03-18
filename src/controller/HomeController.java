@@ -1,11 +1,13 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import sistema.Login;
 import view.ControlledScreen;
 import view.ScreensController;
 
@@ -20,6 +22,8 @@ public class HomeController implements Initializable, ControlledScreen {
     
     @FXML
     private Button btnSair;
+    @FXML
+    private JFXButton btnUsuarios;
 
     /**
      * Initializes the controller class.
@@ -37,6 +41,11 @@ public class HomeController implements Initializable, ControlledScreen {
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
+    }
+
+    @FXML
+    private void eventoUsuariosClick(ActionEvent event) {
+        myController.setScreen(Login.screenUsuarios);
     }
 
 }
