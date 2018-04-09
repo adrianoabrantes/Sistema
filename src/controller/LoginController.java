@@ -16,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import model.Pessoa;
+import sistema.Config;
 import sistema.Login;
 
 /**
@@ -38,7 +39,7 @@ public class LoginController implements Initializable, ControlledScreen {
     private JFXButton btnSair;
     @FXML
     private Label lblVersao;
-    
+
     /**
      * Initializes the controller class.
      */
@@ -64,15 +65,21 @@ public class LoginController implements Initializable, ControlledScreen {
             lblStatusLogin.setVisible(true);
             txtSenha.requestFocus();
         } else {
-            if (validarUsuario(txtUsuario.getText(), txtSenha.getText())) {
+            Config config = new Config();
+
+            if (txtUsuario.getText().equals("MASTER") && txtSenha.getText().equals(config.usuarioMaster(txtUsuario.getText(), txtSenha.getText()))) {
                 myController.setScreen(Login.screenHome);
 
             } else {
-                lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
-                lblStatusLogin.setVisible(true);
-                lblStatusLogin.setText("Usuario ou senha invalido.");
-            }
+                if (validarUsuario(txtUsuario.getText(), txtSenha.getText())) {
+                    myController.setScreen(Login.screenHome);
 
+                } else {
+                    lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
+                    lblStatusLogin.setVisible(true);
+                    lblStatusLogin.setText("Usuario ou senha invalido.");
+                }
+            }
         }
     }
 

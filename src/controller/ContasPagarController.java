@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyEvent;
+import sistema.Login;
 import view.ControlledScreen;
 import view.ScreensController;
 
@@ -75,6 +76,38 @@ public class ContasPagarController implements Initializable, ControlledScreen {
 
     @FXML
     private void eventoSair(ActionEvent event) {
+        limparCampos();
+        desativarCampos();
+        myController.setScreen(Login.screenHome);
+    }
+public void limparCampos() {
+        txtNome.setText("");
+        txtMercadoria.setText("");
+        txtDataCompra.setText("");
+        txtDataVencimento.setText("");
+        txtValor.setText("");
+        btnSalvar.setText("Novo");
+
     }
 
+    public void ativarCampos() {
+        txtNome.setDisable(false);
+        txtNome.requestFocus();
+        txtMercadoria.setDisable(false);
+        txtDataCompra.setDisable(false);
+        txtDataVencimento.setDisable(false);
+        txtValor.setDisable(false);
+
+    }
+
+    public void desativarCampos() {
+        txtNome.setDisable(true);
+        txtNome.requestFocus();
+        txtMercadoria.setDisable(true);
+        txtDataCompra.setDisable(true);
+        txtDataVencimento.setDisable(true);
+        txtValor.setDisable(true);
+        btnSalvar.setText("Novo");
+
+    }
 }

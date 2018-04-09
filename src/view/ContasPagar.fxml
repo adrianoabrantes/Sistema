@@ -14,30 +14,30 @@
    <children>
       <Pane layoutX="27.0" layoutY="24.0" prefHeight="352.0" prefWidth="547.0" style="-fx-background-color: #FFFFFF;">
          <effect>
-            <DropShadow color="#7fcf32" height="112.07" radius="44.1525" width="66.54" />
+            <DropShadow color="#349feb" height="89.31" radius="38.462500000000006" width="66.54" />
          </effect>
          <children>
             <VBox layoutX="16.0" layoutY="47.0" prefHeight="138.0" prefWidth="516.0">
                <children>
-                  <JFXTextField fx:id="txtNome" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Nome">
+                  <JFXTextField fx:id="txtNome" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Nome">
                      <padding>
                         <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
                      </padding></JFXTextField>
-                  <JFXTextField fx:id="txtMercadoria" labelFloat="true" promptText="Mercadoria">
+                  <JFXTextField fx:id="txtMercadoria" disable="true" labelFloat="true" promptText="Mercadoria">
                      <padding>
                         <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
                      </padding></JFXTextField>
                   <HBox prefHeight="28.0" prefWidth="516.0">
                      <children>
-                        <JFXTextField fx:id="txtDataCompra" labelFloat="true" promptText="Data Compra">
+                        <JFXTextField fx:id="txtDataCompra" disable="true" labelFloat="true" promptText="Data Compra">
                            <padding>
                               <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
                            </padding></JFXTextField>
-                        <JFXTextField fx:id="txtDataVencimento" labelFloat="true" promptText="Data Vencimento">
+                        <JFXTextField fx:id="txtDataVencimento" disable="true" labelFloat="true" promptText="Data Vencimento">
                            <padding>
                               <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
                            </padding></JFXTextField>
-                        <JFXTextField fx:id="txtValor" labelFloat="true" promptText="Valor">
+                        <JFXTextField fx:id="txtValor" disable="true" labelFloat="true" promptText="Valor">
                            <padding>
                               <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
                            </padding></JFXTextField>

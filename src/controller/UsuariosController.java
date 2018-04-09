@@ -194,8 +194,4 @@ public class UsuariosController implements Initializable, ControlledScreen {
         btnSalvar.setText("Novo");
 
     }
-
-    private void eventoLista(ActionEvent event) {
-        myController.setScreen(Login.screenTabelaUsuarios);
-    }
 }

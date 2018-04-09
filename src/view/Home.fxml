@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <Button fx:id="btnSair" layoutX="544.0" layoutY="343.0" mnemonicParsing="false" onAction="#EventoSairClick" text="Sair" />
+      <Button fx:id="btnSair" layoutX="549.0" layoutY="364.0" mnemonicParsing="false" onAction="#EventoSairClick" prefHeight="27.0" prefWidth="42.0" text="Sair" />
       <JFXToolbar layoutX="-1.0" prefHeight="8.0" prefWidth="60.0" />
       <Pane layoutY="-1.0" prefHeight="27.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
          <effect>
