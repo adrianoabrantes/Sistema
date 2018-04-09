@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -8,12 +10,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
       <Button fx:id="btnSair" layoutX="544.0" layoutY="343.0" mnemonicParsing="false" onAction="#EventoSairClick" text="Sair" />
-      <JFXToolbar layoutX="8.0" layoutY="7.0" prefHeight="43.0" prefWidth="585.0">
-         <left>
-            <JFXButton fx:id="btnUsuarios" onAction="#eventoUsuariosClick" text="Usuarios" BorderPane.alignment="CENTER" />
-         </left></JFXToolbar>
+      <JFXToolbar layoutX="-1.0" prefHeight="8.0" prefWidth="60.0" />
+      <Pane layoutY="-1.0" prefHeight="27.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+         <effect>
+            <DropShadow color="#3371d3" height="58.38" radius="39.8975" spread="0.6" width="103.21" />
+         </effect>
+         <children>
+            <JFXButton fx:id="btnUsuarios" layoutX="-2.0" layoutY="-1.0" onAction="#eventoUsuariosClick" ripplerFill="#3371d3" text="Usuarios" />
+            <JFXButton fx:id="btnContas" layoutX="70.0" onAction="#eventoContasClick" ripplerFill="#3371d3" text="Contas a pagar" />
+         </children>
+      </Pane>
+      <Label fx:id="lblUltLogin" layoutX="10.0" layoutY="383.0" text="Ultimo Login as ">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

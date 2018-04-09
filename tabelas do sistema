@@ -1,0 +1,9 @@
+create table "PESSOA" (
+ID integer not null primary key
+ generated always as identity
+(start with 1,increment by 1),
+"NOME" varchar(50)not null,
+"USUARIO" varchar(30)not null,
+"SENHA" varchar(10)not null);
+
+insert into pessoa("nome", "usuario","senha")values("adriano","china","senha");

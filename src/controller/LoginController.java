@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import model.Pessoa;
@@ -35,17 +36,22 @@ public class LoginController implements Initializable, ControlledScreen {
     private JFXButton btnEntrar;
     @FXML
     private JFXButton btnSair;
-
+    @FXML
+    private Label lblVersao;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lblStatusLogin.setVisible(false);
+        lblVersao.setText("Versao: 1.0");
+
     }
 
     @FXML
-    private void EntrarEventoCick(ActionEvent event) {
+    private void EntrarEventoCick() {
+
         if (txtUsuario.getText().isEmpty()) {
             lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
             lblStatusLogin.setText("Campo usuario nao podem estar vazios.");
@@ -73,6 +79,9 @@ public class LoginController implements Initializable, ControlledScreen {
     @FXML
     private void keyPressed(KeyEvent event) {
         lblStatusLogin.setVisible(false);
+        if (event.getCode() == KeyCode.ENTER) {
+            EntrarEventoCick();
+        }
     }
 
     @FXML

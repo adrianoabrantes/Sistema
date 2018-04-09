@@ -19,6 +19,10 @@ public class Login extends Application {
     public static String screenHomeFile = "Home.fxml";
     public static String screenUsuarios = "usuarios";
     public static String screenUsuariosFile = "Usuarios.fxml";
+    public static String screenTabelaUsuarios = "Tabela";
+    public static String screenTabelaUsuariosFile = "TabelaUsuarios.fxml";
+    public static String screenContasPagar = "ContasPagar.fxml";
+    public static String screenContasPagarFile = "ContasPagar.fxml";
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -27,6 +31,8 @@ public class Login extends Application {
         mainContainer.loadScreen(Login.screen1ID, Login.screen1File);
         mainContainer.loadScreen(Login.screenHome, Login.screenHomeFile);
         mainContainer.loadScreen(Login.screenUsuarios, Login.screenUsuariosFile);
+        mainContainer.loadScreen(Login.screenTabelaUsuarios, Login.screenTabelaUsuariosFile);
+        mainContainer.loadScreen(Login.screenContasPagar, Login.screenContasPagarFile);
         mainContainer.setScreen(Login.screen1ID);
         Group root = new Group();
         root.getChildren().addAll(mainContainer);

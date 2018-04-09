@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import model.Pessoa;
@@ -58,10 +59,17 @@ public class UsuariosController implements Initializable, ControlledScreen {
     @FXML
     private void eventoKeyPressed(KeyEvent event) {
         lblStatus.setVisible(false);
+        if(event.getCode()==KeyCode.ENTER){
+            eventoSalvar();
+        }
     }
 
     @FXML
-    private void eventoSalvar(ActionEvent event) {
+    private void eventoSalvar() {
+        PessoaDAO dao = new PessoaDAO();
+        Pessoa pessoa = new Pessoa();
+
+        lblStatus.setVisible(false);
         if (btnSalvar.getText().equals("Novo")) {
             ativarCampos();
             btnSalvar.setText("Salvar");
@@ -100,20 +108,28 @@ public class UsuariosController implements Initializable, ControlledScreen {
                 txtSenha.requestFocus();
 
             } else {
-                PessoaDAO dao = new PessoaDAO();
-                Pessoa pessoa = new Pessoa();
+                if (!dao.duplicidade(pessoa)) {
+                    lblStatus.setText("Usuario " + txtUsuario.getText() + " ja existe.");
+                        lblStatus.setTextFill(Paint.valueOf("#FF0000"));
+                        lblStatus.setVisible(true);
+                        
+                }else{
+                    pessoa.setNome(txtNome.getText());
+                    pessoa.setUsuario(txtUsuario.getText());
+                    pessoa.setSenha(txtSenha.getText());
 
-                pessoa.setNome(txtNome.getText());
-                pessoa.setUsuario(txtUsuario.getText());
-                pessoa.setSenha(txtSenha.getText());
+                    if (dao.salvarPessoa(pessoa)) {
+                        lblStatus.setText("Usuario " + txtUsuario.getText() + " salvo com sucesso.");
+                        lblStatus.setTextFill(Paint.valueOf("#03ff4e"));
+                        lblStatus.setVisible(true);
+                        limparCampos();
+                        desativarCampos();
+                    } else {
+                        lblStatus.setText("Erro ao salvar usuario " + txtUsuario.getText());
+                        lblStatus.setTextFill(Paint.valueOf("#FF0000"));
+                        lblStatus.setVisible(true);
 
-                if (dao.salvarPessoa(pessoa)) {
-                    lblStatus.setText("Usuario " + txtUsuario.getText() + " salvo com sucesso.");
-                    lblStatus.setTextFill(Paint.valueOf("#03ff4e"));
-                    lblStatus.setVisible(true);
-                    limparCampos();
-                } else {
-
+                    }
                 }
             }
         }
@@ -125,12 +141,17 @@ public class UsuariosController implements Initializable, ControlledScreen {
 
     @FXML
     private void eventoExcluir(ActionEvent event) {
+        if (!txtNome.getText().isEmpty()) {
+
+        }
+
     }
 
     @FXML
     private void eventoCancelar(ActionEvent event) {
         limparCampos();
         desativarCampos();
+        lblStatus.setVisible(false);
 
     }
 
@@ -138,6 +159,7 @@ public class UsuariosController implements Initializable, ControlledScreen {
     private void eventoSair(ActionEvent event) {
         limparCampos();
         desativarCampos();
+        lblStatus.setVisible(false);
         myController.setScreen(Login.screenHome);
     }
 
@@ -151,7 +173,6 @@ public class UsuariosController implements Initializable, ControlledScreen {
         txtUsuario.setText("");
         txtSenha.setText("");
         txtConfSenha.setText("");
-        lblStatus.setVisible(false);
         btnSalvar.setText("Novo");
 
     }
@@ -172,5 +193,9 @@ public class UsuariosController implements Initializable, ControlledScreen {
         txtConfSenha.setDisable(true);
         btnSalvar.setText("Novo");
 
+    }
+
+    private void eventoLista(ActionEvent event) {
+        myController.setScreen(Login.screenTabelaUsuarios);
     }
 }

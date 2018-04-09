@@ -165,6 +165,27 @@ public class PessoaDAO {
         }
 
     }
+    public boolean duplicidade(Pessoa pessoa) {
+        String sql = "SELECT usuario FROM pessoa WHERE usuario=?";
+
+        try {
+            PreparedStatement prepareStatement = con.prepareStatement(sql);
+            prepareStatement.setString(1, pessoa.getUsuario());
+            ResultSet resultado = prepareStatement.executeQuery();
+            if (resultado.next()) {
+                prepareStatement.close();
+                con.close();
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERRO: " + ex);
+            return false;
+
+        }
+
+    }
 
     public boolean login(Pessoa pessoa) {
         String sql = "SELECT usuario,senha FROM pessoa WHERE usuario=? and senha=?";

@@ -13,13 +13,8 @@
    <children>
       <Pane layoutX="103.0" layoutY="72.0" prefHeight="257.0" prefWidth="395.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <VBox layoutX="62.0" layoutY="26.0" prefHeight="206.0" prefWidth="271.0">
+            <VBox layoutX="62.0" layoutY="54.0" prefHeight="140.0" prefWidth="271.0">
                <children>
-                  <Label text="Sistema Gerencial">
-                     <VBox.margin>
-                        <Insets bottom="40.0" left="70.0" />
-                     </VBox.margin>
-                  </Label>
                   <JFXTextField fx:id="txtUsuario" labelFloat="true" onKeyPressed="#keyPressed" promptText="Usuario ...">
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -51,10 +46,15 @@
                   </HBox>
                </children>
             </VBox>
+            <Label layoutX="142.0" layoutY="6.0" text="Sistema Gerencial" />
          </children>
          <effect>
             <DropShadow color="#4d83e3" height="160.0" radius="79.5" spread="0.3" width="160.0" />
          </effect>
       </Pane>
+      <Label fx:id="lblVersao" layoutX="2.0" layoutY="383.0" text="Versao:">
+         <padding>
+            <Insets left="10.0" />
+         </padding></Label>
    </children>
 </AnchorPane>
