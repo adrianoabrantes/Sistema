@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Pessoa;
+import sistema.Alertas;
 
 /**
  *
@@ -35,7 +36,7 @@ public class PessoaDAO {
             return true;
 
         } catch (SQLException ex) {
-            System.out.println("Erro ao cadastrar: " + pessoa.getNome() + " ERRO: " + ex);
+            new Alertas().Alertas("erro", "Problema encontrado:", "Erro ao cadastrar: " + pessoa.getNome() + " ERRO: " + ex);
             return false;
         }
     }
@@ -61,7 +62,7 @@ public class PessoaDAO {
                 return true;
 
             } catch (SQLException ex) {
-                System.out.println("Erro ao alterar: " + pessoa.getNome() + " ERRO: " + ex);
+                new Alertas().Alertas("erro", "Problema encontrado:", "Erro ao alterar: " + pessoa.getNome() + " ERRO: " + ex);
                 prepareStatement.close();
                 con.close();
                 return false;
@@ -138,7 +139,7 @@ public class PessoaDAO {
             con.close();
 
         } catch (Exception e) {
-            System.out.println("Erro ao carregar dados da tabela Pessoa ERRO: " + e);
+            new Alertas().Alertas("erro", "Problema encontrado:", "Erro ao carregar dados da tabela Pessoa ERRO: " + e);
             return null;
         }
         return pessoas;
@@ -159,12 +160,13 @@ public class PessoaDAO {
                 return false;
             }
         } catch (SQLException ex) {
-            System.out.println("ERRO: " + ex);
+            new Alertas().Alertas("erro", "Problema encontrado:", "ERRO: " + ex);
             return false;
 
         }
 
     }
+
     public boolean duplicidade(Pessoa pessoa) {
         String sql = "SELECT usuario FROM pessoa WHERE usuario=?";
 
@@ -180,7 +182,7 @@ public class PessoaDAO {
                 return false;
             }
         } catch (SQLException ex) {
-            System.out.println("ERRO: " + ex);
+            new Alertas().Alertas("erro", "Problema encontrado:", "ERRO: " + ex);
             return false;
 
         }
@@ -203,7 +205,7 @@ public class PessoaDAO {
                 return false;
             }
         } catch (SQLException ex) {
-            System.out.println("ERRO: " + ex);
+            new Alertas().Alertas("erro", "Problema encontrado:", "ERRO: " + ex);
             return false;
 
         }

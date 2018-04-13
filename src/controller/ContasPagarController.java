@@ -40,6 +40,12 @@ public class ContasPagarController implements Initializable, ControlledScreen {
     private JFXButton btnCancelar;
     @FXML
     private JFXButton btnSair;
+    @FXML
+    private JFXTextField txtPrimeiroAlerta;
+    @FXML
+    private JFXTextField txtSegundoAlerta;
+    @FXML
+    private JFXTextField txtTerceiroAlerta;
 
     /**
      * Initializes the controller class.

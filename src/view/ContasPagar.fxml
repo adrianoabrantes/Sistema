@@ -17,7 +17,7 @@
             <DropShadow color="#349feb" height="89.31" radius="38.462500000000006" width="66.54" />
          </effect>
          <children>
-            <VBox layoutX="16.0" layoutY="47.0" prefHeight="138.0" prefWidth="516.0">
+            <VBox layoutX="16.0" layoutY="47.0" prefHeight="206.0" prefWidth="516.0">
                <children>
                   <JFXTextField fx:id="txtNome" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Nome">
                      <padding>
@@ -41,6 +41,25 @@
                            <padding>
                               <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
                            </padding></JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="516.0">
+                     <children>
+                        <JFXTextField fx:id="txtPrimeiroAlerta" disable="true" labelFloat="true" promptText="Primeiro Alerta">
+                           <padding>
+                              <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtSegundoAlerta" disable="true" labelFloat="true" promptText="Segundo Alerta">
+                           <padding>
+                              <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtTerceiroAlerta" disable="true" labelFloat="true" promptText="Terceiro Alerta">
+                           <padding>
+                              <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
+                           </padding>
+                        </JFXTextField>
                      </children>
                   </HBox>
                   <HBox prefHeight="27.0" prefWidth="429.0">

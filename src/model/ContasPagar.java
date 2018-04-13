@@ -5,71 +5,49 @@ package model;
  * @author adrianoabrantesdeandrade
  */
 public class ContasPagar {
-   private int id;
-   private String nome;
-   private String mercadoria;
-   private String dataCompra;
-   private String dataVencimento;
-   private double valor;
-   private int totalDiasVencidos;
-   private String primeiroAlerta;
-   private String segundoAlerta;
-   private int diasAdiados;
-   private boolean cancelado;
-   private boolean pago;
-   private String dataPagamento;
-   private int numComprovante;
+
+    private int ID;
+    private String nome;
+    private String mercadoria;
+    private String dataCompra;
+    private String dataVencimento;
+    private double valor;
+    private String primeiroAlerta;
+    private String segundoAlerta;
+    private String terceiroAlerta;
 
     public ContasPagar() {
     }
 
-    public ContasPagar(int id, String nome, String mercadoria, String dataCompra, String dataVencimento, double valor, int totalDiasVencidos, String primeiroAlerta, String segundoAlerta, int diasAdiados, boolean cancelado, boolean pago, String dataPagamento, int numComprovante) {
-        this.id = id;
+    public ContasPagar(int ID, String nome, String mercadoria, String dataCompra, String dataVencimento, double valor, String primeiroAlerta, String segundoAlerta, String terceiroAlerta) {
+        this.ID = ID;
         this.nome = nome;
         this.mercadoria = mercadoria;
         this.dataCompra = dataCompra;
         this.dataVencimento = dataVencimento;
         this.valor = valor;
-        this.totalDiasVencidos = totalDiasVencidos;
         this.primeiroAlerta = primeiroAlerta;
         this.segundoAlerta = segundoAlerta;
-        this.diasAdiados = diasAdiados;
-        this.cancelado = cancelado;
-        this.pago = pago;
-        this.dataPagamento = dataPagamento;
-        this.numComprovante = numComprovante;
+        this.terceiroAlerta = terceiroAlerta;
     }
 
-    public ContasPagar(String nome, String mercadoria, String dataCompra, String dataVencimento, double valor, int totalDiasVencidos, String primeiroAlerta, String segundoAlerta, int diasAdiados, boolean cancelado, boolean pago, String dataPagamento, int numComprovante) {
+    public ContasPagar(String nome, String mercadoria, String dataCompra, String dataVencimento, double valor, String primeiroAlerta, String segundoAlerta, String terceiroAlerta) {
         this.nome = nome;
         this.mercadoria = mercadoria;
         this.dataCompra = dataCompra;
         this.dataVencimento = dataVencimento;
         this.valor = valor;
-        this.totalDiasVencidos = totalDiasVencidos;
         this.primeiroAlerta = primeiroAlerta;
         this.segundoAlerta = segundoAlerta;
-        this.diasAdiados = diasAdiados;
-        this.cancelado = cancelado;
-        this.pago = pago;
-        this.dataPagamento = dataPagamento;
-        this.numComprovante = numComprovante;
+        this.terceiroAlerta = terceiroAlerta;
     }
 
-    public int getNumComprovante() {
-        return numComprovante;
+    public int getID() {
+        return ID;
     }
 
-    public void setNumComprovante(int numComprovante) {
-        this.numComprovante = numComprovante;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getNome() {
@@ -112,14 +90,6 @@ public class ContasPagar {
         this.valor = valor;
     }
 
-    public int getTotalDiasVencidos() {
-        return totalDiasVencidos;
-    }
-
-    public void setTotalDiasVencidos(int totalDiasVencidos) {
-        this.totalDiasVencidos = totalDiasVencidos;
-    }
-
     public String getPrimeiroAlerta() {
         return primeiroAlerta;
     }
@@ -136,38 +106,12 @@ public class ContasPagar {
         this.segundoAlerta = segundoAlerta;
     }
 
-    public int getDiasAdiados() {
-        return diasAdiados;
+    public String getTerceiroAlerta() {
+        return terceiroAlerta;
     }
 
-    public void setDiasAdiados(int diasAdiados) {
-        this.diasAdiados = diasAdiados;
+    public void setTerceiroAlerta(String terceiroAlerta) {
+        this.terceiroAlerta = terceiroAlerta;
     }
 
-    public boolean isCancelado() {
-        return cancelado;
-    }
-
-    public void setCancelado(boolean cancelado) {
-        this.cancelado = cancelado;
-    }
-
-    public boolean isPago() {
-        return pago;
-    }
-
-    public void setPago(boolean pago) {
-        this.pago = pago;
-    }
-
-    public String getDataPagamento() {
-        return dataPagamento;
-    }
-
-    public void setDataPagamento(String dataPagamento) {
-        this.dataPagamento = dataPagamento;
-    }
-   
-   
-   
 }

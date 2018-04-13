@@ -47,6 +47,9 @@ public class LoginController implements Initializable, ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         lblStatusLogin.setVisible(false);
         lblVersao.setText("Versao: 1.0");
+        Config confg = new Config();
+        
+        //System.out.println(confg.usuarioMaster("master", "master"));
 
     }
 
