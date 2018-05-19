@@ -19,7 +19,7 @@
          <children>
             <VBox layoutX="16.0" layoutY="47.0" prefHeight="206.0" prefWidth="516.0">
                <children>
-                  <JFXTextField fx:id="txtNome" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Nome">
+                  <JFXTextField fx:id="txtNome" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Nome Fornecedor">
                      <padding>
                         <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
                      </padding></JFXTextField>
@@ -43,25 +43,12 @@
                            </padding></JFXTextField>
                      </children>
                   </HBox>
-                  <HBox prefHeight="28.0" prefWidth="516.0">
-                     <children>
-                        <JFXTextField fx:id="txtPrimeiroAlerta" disable="true" labelFloat="true" promptText="Primeiro Alerta">
-                           <padding>
-                              <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
-                           </padding>
-                        </JFXTextField>
-                        <JFXTextField fx:id="txtSegundoAlerta" disable="true" labelFloat="true" promptText="Segundo Alerta">
-                           <padding>
-                              <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
-                           </padding>
-                        </JFXTextField>
-                        <JFXTextField fx:id="txtTerceiroAlerta" disable="true" labelFloat="true" promptText="Terceiro Alerta">
-                           <padding>
-                              <Insets bottom="3.0" left="10.0" right="10.0" top="15.0" />
-                           </padding>
-                        </JFXTextField>
-                     </children>
-                  </HBox>
+                  <JFXCheckBox fx:id="ckbxAlertaMensal" disable="true" text="Alerta Mensal">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <Label fx:id="lblStatus" text="Status" visible="false" />
                   <HBox prefHeight="27.0" prefWidth="429.0">
                      <children>
                         <JFXButton fx:id="btnSalvar" onAction="#eventoSalvar" prefWidth="90.0" text="Novo">

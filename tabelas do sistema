@@ -7,3 +7,14 @@ ID integer not null primary key
 "SENHA" varchar(10)not null);
 
 insert into pessoa("nome", "usuario","senha")values("adriano","china","senha");
+
+create table "CONTASPAGAR" (
+ID integer not null primary key
+ generated always as identity
+(start with 1,increment by 1),
+"NOMEFORNECEDOR" varchar(50)not null,
+"MERCADORIA" varchar(50)not null,
+"DATACOMPRA" varchar(8)not null,
+"DATAVENCIMENTO" varchar(8)not null,
+"ALERTAMENSAL" BOOLEAN not null,
+"VALOR" DECIMAL not null);

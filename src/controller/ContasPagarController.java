@@ -1,13 +1,18 @@
 package controller;
 
+import DAO.ContasPagarDAO;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Paint;
+import model.ContasPagar;
 import sistema.Login;
 import view.ControlledScreen;
 import view.ScreensController;
@@ -41,11 +46,9 @@ public class ContasPagarController implements Initializable, ControlledScreen {
     @FXML
     private JFXButton btnSair;
     @FXML
-    private JFXTextField txtPrimeiroAlerta;
+    private JFXCheckBox ckbxAlertaMensal;
     @FXML
-    private JFXTextField txtSegundoAlerta;
-    @FXML
-    private JFXTextField txtTerceiroAlerta;
+    private Label lblStatus;
 
     /**
      * Initializes the controller class.
@@ -66,6 +69,48 @@ public class ContasPagarController implements Initializable, ControlledScreen {
 
     @FXML
     private void eventoSalvar(ActionEvent event) {
+        ContasPagarDAO dao = new ContasPagarDAO();
+        ContasPagar contas = new ContasPagar();
+        lblStatus.setVisible(false);
+
+        if (btnSalvar.getText().equals("Novo")) {
+            ativarCampos();
+            btnSalvar.setText("Salvar");
+
+        } else if (btnSalvar.getText().equals("Salvar")) {
+            if (txtNome.getText().isEmpty()) {
+                lblStatus.setTextFill(Paint.valueOf("#FF0000"));
+                lblStatus.setText("Campo nome nao podem estar vazios.");
+                lblStatus.setVisible(true);
+                txtNome.requestFocus();
+
+            } else if (txtMercadoria.getText().isEmpty()) {
+                lblStatus.setTextFill(Paint.valueOf("#FF0000"));
+                lblStatus.setText("Campo Mercadoria nao podem estar vazios.");
+                lblStatus.setVisible(true);
+                txtMercadoria.requestFocus();
+
+            } else if (txtDataCompra.getText().isEmpty()) {
+                lblStatus.setTextFill(Paint.valueOf("#FF0000"));
+                lblStatus.setText("Campo Data da Compra nao podem estar vazios.");
+                lblStatus.setVisible(true);
+                txtDataCompra.requestFocus();
+
+            } else if (txtDataVencimento.getText().isEmpty()) {
+                lblStatus.setTextFill(Paint.valueOf("#FF0000"));
+                lblStatus.setText("Campo Data do Vencimento nao podem estar vazios.");
+                lblStatus.setVisible(true);
+                txtDataVencimento.requestFocus();
+
+            } else if (txtValor.getText().isEmpty()) {
+                lblStatus.setTextFill(Paint.valueOf("#FF0000"));
+                lblStatus.setText("Campo Valor nao podem estar vazios.");
+                lblStatus.setVisible(true);
+                txtValor.requestFocus();
+            }else{
+                dao.SalvarContaPagar(contas);
+            }
+        }
     }
 
     @FXML
@@ -78,6 +123,8 @@ public class ContasPagarController implements Initializable, ControlledScreen {
 
     @FXML
     private void eventoCancelar(ActionEvent event) {
+        limparCampos();
+        desativarCampos();
     }
 
     @FXML
@@ -86,12 +133,14 @@ public class ContasPagarController implements Initializable, ControlledScreen {
         desativarCampos();
         myController.setScreen(Login.screenHome);
     }
-public void limparCampos() {
+
+    public void limparCampos() {
         txtNome.setText("");
         txtMercadoria.setText("");
         txtDataCompra.setText("");
         txtDataVencimento.setText("");
         txtValor.setText("");
+        ckbxAlertaMensal.setSelected(false);
         btnSalvar.setText("Novo");
 
     }
@@ -103,6 +152,7 @@ public void limparCampos() {
         txtDataCompra.setDisable(false);
         txtDataVencimento.setDisable(false);
         txtValor.setDisable(false);
+        ckbxAlertaMensal.setDisable(false);
 
     }
 
@@ -113,6 +163,7 @@ public void limparCampos() {
         txtDataCompra.setDisable(true);
         txtDataVencimento.setDisable(true);
         txtValor.setDisable(true);
+        ckbxAlertaMensal.setDisable(true);
         btnSalvar.setText("Novo");
 
     }

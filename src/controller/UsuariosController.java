@@ -6,12 +6,17 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import model.Pessoa;
 import sistema.Login;
@@ -47,19 +52,29 @@ public class UsuariosController implements Initializable, ControlledScreen {
     private JFXButton btnCancelar;
     @FXML
     private JFXButton btnSair;
+    @FXML
+    private Pane painelTabela;
+    @FXML
+    private TableView Tabela = new TableView();
+    @FXML
+    private JFXButton btnListar;
+    @FXML
+    private JFXButton btnVoltar;
+    @FXML
+    private Pane painelUsuarios;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        painelTabela.setVisible(false);
     }
 
     @FXML
     private void eventoKeyPressed(KeyEvent event) {
         lblStatus.setVisible(false);
-        if(event.getCode()==KeyCode.ENTER){
+        if (event.getCode() == KeyCode.ENTER) {
             eventoSalvar();
         }
     }
@@ -108,12 +123,12 @@ public class UsuariosController implements Initializable, ControlledScreen {
                 txtSenha.requestFocus();
 
             } else {
-                if (!dao.duplicidade(pessoa)) {
+                if (dao.existe(txtUsuario.getText())) {
                     lblStatus.setText("Usuario " + txtUsuario.getText() + " ja existe.");
-                        lblStatus.setTextFill(Paint.valueOf("#FF0000"));
-                        lblStatus.setVisible(true);
-                        
-                }else{
+                    lblStatus.setTextFill(Paint.valueOf("#FF0000"));
+                    lblStatus.setVisible(true);
+
+                } else {
                     pessoa.setNome(txtNome.getText());
                     pessoa.setUsuario(txtUsuario.getText());
                     pessoa.setSenha(txtSenha.getText());
@@ -141,7 +156,11 @@ public class UsuariosController implements Initializable, ControlledScreen {
 
     @FXML
     private void eventoExcluir(ActionEvent event) {
+
+        lblStatus.setVisible(false);
         if (!txtNome.getText().isEmpty()) {
+            lblStatus.setVisible(true);
+            lblStatus.setText("Nenhum usuario selecionado.");
 
         }
 
@@ -182,6 +201,8 @@ public class UsuariosController implements Initializable, ControlledScreen {
         txtNome.requestFocus();
         txtUsuario.setDisable(false);
         txtSenha.setDisable(false);
+        btnAlterar.setDisable(true);
+        btnExcluir.setDisable(true);
         txtConfSenha.setDisable(false);
 
     }
@@ -190,8 +211,41 @@ public class UsuariosController implements Initializable, ControlledScreen {
         txtNome.setDisable(true);
         txtUsuario.setDisable(true);
         txtSenha.setDisable(true);
+        btnAlterar.setDisable(false);
+        btnExcluir.setDisable(false);
         txtConfSenha.setDisable(true);
         btnSalvar.setText("Novo");
 
+    }
+
+    @FXML
+    private void eventoListar(ActionEvent event) {
+        if (!painelTabela.isVisible()) {
+            painelUsuarios.setVisible(false);
+            painelTabela.setVisible(true);
+            TableColumn colunaId = new TableColumn("ID");
+            TableColumn colunaNome = new TableColumn("Nome");
+            TableColumn colunaUsuario = new TableColumn("Usuario");
+            TableColumn colunaSenha = new TableColumn("Senha");
+            colunaId.setCellValueFactory(new PropertyValueFactory("id"));
+            colunaNome.setCellValueFactory(new PropertyValueFactory("nome"));
+            colunaUsuario.setCellValueFactory(new PropertyValueFactory("usuario"));
+            colunaSenha.setCellValueFactory(new PropertyValueFactory("senha"));
+            Tabela.getColumns().addAll(colunaId, colunaNome, colunaUsuario, colunaSenha);
+            PessoaDAO dao = new PessoaDAO();
+            Tabela.setItems(FXCollections.observableArrayList(dao.getList()));
+        }
+    }
+
+    @FXML
+    private void eventoVoltar(ActionEvent event) {
+        if (!painelUsuarios.isVisible()) {
+            painelTabela.setVisible(false);
+            painelUsuarios.setVisible(true);
+            Tabela.getColumns().clear();
+            limparCampos();
+            desativarCampos();
+            lblStatus.setVisible(false);
+        }
     }
 }

@@ -6,56 +6,50 @@ package model;
  */
 public class ContasPagar {
 
-    private int ID;
-    private String nome;
+    private int id;
+    private String nomeFornecedor;
     private String mercadoria;
     private String dataCompra;
     private String dataVencimento;
     private double valor;
-    private String primeiroAlerta;
-    private String segundoAlerta;
-    private String terceiroAlerta;
+    private boolean alertaMensal;
 
     public ContasPagar() {
     }
 
-    public ContasPagar(int ID, String nome, String mercadoria, String dataCompra, String dataVencimento, double valor, String primeiroAlerta, String segundoAlerta, String terceiroAlerta) {
-        this.ID = ID;
-        this.nome = nome;
+    public ContasPagar(int id, String nomeFornecedor, String mercadoria, String dataCompra, String dataVencimento, double valor, boolean alertaMensal) {
+        this.id = id;
+        this.nomeFornecedor = nomeFornecedor;
         this.mercadoria = mercadoria;
         this.dataCompra = dataCompra;
         this.dataVencimento = dataVencimento;
         this.valor = valor;
-        this.primeiroAlerta = primeiroAlerta;
-        this.segundoAlerta = segundoAlerta;
-        this.terceiroAlerta = terceiroAlerta;
+        this.alertaMensal = alertaMensal;
     }
 
-    public ContasPagar(String nome, String mercadoria, String dataCompra, String dataVencimento, double valor, String primeiroAlerta, String segundoAlerta, String terceiroAlerta) {
-        this.nome = nome;
+    public ContasPagar(String nomeFornecedor, String mercadoria, String dataCompra, String dataVencimento, double valor, boolean alertaMensal) {
+        this.nomeFornecedor = nomeFornecedor;
         this.mercadoria = mercadoria;
         this.dataCompra = dataCompra;
         this.dataVencimento = dataVencimento;
         this.valor = valor;
-        this.primeiroAlerta = primeiroAlerta;
-        this.segundoAlerta = segundoAlerta;
-        this.terceiroAlerta = terceiroAlerta;
+        this.alertaMensal = alertaMensal;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeFornecedor() {
+        return nomeFornecedor;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeFornecedor(String nomeFornecedor) {
+        this.nomeFornecedor = nomeFornecedor;
     }
 
     public String getMercadoria() {
@@ -90,28 +84,12 @@ public class ContasPagar {
         this.valor = valor;
     }
 
-    public String getPrimeiroAlerta() {
-        return primeiroAlerta;
+    public boolean isAlertaMensal() {
+        return alertaMensal;
     }
 
-    public void setPrimeiroAlerta(String primeiroAlerta) {
-        this.primeiroAlerta = primeiroAlerta;
+    public void setAlertaMensal(boolean alertaMensal) {
+        this.alertaMensal = alertaMensal;
     }
-
-    public String getSegundoAlerta() {
-        return segundoAlerta;
-    }
-
-    public void setSegundoAlerta(String segundoAlerta) {
-        this.segundoAlerta = segundoAlerta;
-    }
-
-    public String getTerceiroAlerta() {
-        return terceiroAlerta;
-    }
-
-    public void setTerceiroAlerta(String terceiroAlerta) {
-        this.terceiroAlerta = terceiroAlerta;
-    }
-
+    
 }

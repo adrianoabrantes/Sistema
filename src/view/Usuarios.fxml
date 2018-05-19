@@ -11,7 +11,21 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UsuariosController">
    <children>
-      <Pane layoutX="22.0" layoutY="23.0" prefHeight="351.0" prefWidth="551.0" style="-fx-background-color: #FFFFFF;">
+      <Pane fx:id="painelTabela" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <VBox prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <TableView fx:id="Tabela" prefHeight="400.0" prefWidth="600.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton fx:id="btnVoltar" onAction="#eventoVoltar" prefWidth="90.0" text="Voltar" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane fx:id="painelUsuarios" layoutX="22.0" layoutY="23.0" prefHeight="351.0" prefWidth="551.0" style="-fx-background-color: #FFFFFF;">
          <effect>
             <DropShadow color="#ff5353" height="87.79" radius="42.635000000000005" spread="0.31" width="84.75" />
          </effect>
@@ -65,6 +79,7 @@
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </JFXButton>
+                        <JFXButton fx:id="btnListar" onAction="#eventoListar" prefWidth="90.0" text="Listar" />
                         <JFXButton fx:id="btnSair" onAction="#eventoSair" prefWidth="90.0" text="Sair">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
