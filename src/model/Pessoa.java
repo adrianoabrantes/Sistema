@@ -10,22 +10,25 @@ public class Pessoa {
     private String nome;
     private String usuario;
     private String senha;
+    private boolean perfil;
 
     public Pessoa() {
 
     }
 
-    public Pessoa(int id, String nome, String usuario, String senha) {
+    public Pessoa(int id, String nome, String usuario, String senha, boolean perfil) {
         this.id = id;
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;
+        this.perfil = perfil;
     }
 
-    public Pessoa(String nome, String usuario, String senha) {
+    public Pessoa(String nome, String usuario, String senha, boolean perfil) {
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;
+        this.perfil = perfil;
     }
 
     public String getUsuario() {
@@ -58,6 +61,14 @@ public class Pessoa {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public boolean isPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(boolean perfil) {
+        this.perfil = perfil;
     }
 
     public void mostraPessoas() {

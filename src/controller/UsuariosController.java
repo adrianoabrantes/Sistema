@@ -3,6 +3,7 @@ package controller;
 import DAO.PessoaDAO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -55,13 +57,17 @@ public class UsuariosController implements Initializable, ControlledScreen {
     @FXML
     private Pane painelTabela;
     @FXML
-    private TableView Tabela = new TableView();
-    @FXML
     private JFXButton btnListar;
     @FXML
     private JFXButton btnVoltar;
     @FXML
     private Pane painelUsuarios;
+    @FXML
+    private TableView<Pessoa> tabela;
+    @FXML
+    private JFXRadioButton rbAdministrador;
+    @FXML
+    private JFXRadioButton rbUsuario;
 
     /**
      * Initializes the controller class.
@@ -69,6 +75,9 @@ public class UsuariosController implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         painelTabela.setVisible(false);
+        ToggleGroup group = new ToggleGroup();
+        rbAdministrador.setToggleGroup(group);
+        rbUsuario.setToggleGroup(group);
     }
 
     @FXML
@@ -193,6 +202,9 @@ public class UsuariosController implements Initializable, ControlledScreen {
         txtSenha.setText("");
         txtConfSenha.setText("");
         btnSalvar.setText("Novo");
+        if(rbAdministrador.isSelected()){
+            rbAdministrador.setSelected(false);
+        }
 
     }
 
@@ -204,6 +216,8 @@ public class UsuariosController implements Initializable, ControlledScreen {
         btnAlterar.setDisable(true);
         btnExcluir.setDisable(true);
         txtConfSenha.setDisable(false);
+        rbAdministrador.setDisable(false);
+        rbUsuario.setDisable(false);
 
     }
 
@@ -223,17 +237,22 @@ public class UsuariosController implements Initializable, ControlledScreen {
         if (!painelTabela.isVisible()) {
             painelUsuarios.setVisible(false);
             painelTabela.setVisible(true);
+            
             TableColumn colunaId = new TableColumn("ID");
             TableColumn colunaNome = new TableColumn("Nome");
             TableColumn colunaUsuario = new TableColumn("Usuario");
             TableColumn colunaSenha = new TableColumn("Senha");
+            
             colunaId.setCellValueFactory(new PropertyValueFactory("id"));
             colunaNome.setCellValueFactory(new PropertyValueFactory("nome"));
             colunaUsuario.setCellValueFactory(new PropertyValueFactory("usuario"));
             colunaSenha.setCellValueFactory(new PropertyValueFactory("senha"));
-            Tabela.getColumns().addAll(colunaId, colunaNome, colunaUsuario, colunaSenha);
+            
+            tabela.getColumns().addAll(colunaId, colunaNome, colunaUsuario, colunaSenha);
+            
             PessoaDAO dao = new PessoaDAO();
-            Tabela.setItems(FXCollections.observableArrayList(dao.getList()));
+            
+            tabela.setItems(FXCollections.observableArrayList(dao.getList()));
         }
     }
 
@@ -242,7 +261,7 @@ public class UsuariosController implements Initializable, ControlledScreen {
         if (!painelUsuarios.isVisible()) {
             painelTabela.setVisible(false);
             painelUsuarios.setVisible(true);
-            Tabela.getColumns().clear();
+            tabela.getColumns().clear();
             limparCampos();
             desativarCampos();
             lblStatus.setVisible(false);

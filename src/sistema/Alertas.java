@@ -15,21 +15,21 @@ public class Alertas {
         switch (titulo) {
             case "info":
                 Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
-                dialogoInfo.setTitle("Mensagem do Sistema");
+                dialogoInfo.setTitle("INFORMATIVA");
                 dialogoInfo.setHeaderText(cabecalho);
                 dialogoInfo.setContentText(info);
                 dialogoInfo.showAndWait();
                 break;
             case "erro":
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
-                dialogoErro.setTitle("Mensagem do Sistema");
+                dialogoErro.setTitle("ERRO");
                 dialogoErro.setHeaderText(cabecalho);
                 dialogoErro.setContentText(info);
                 dialogoErro.showAndWait();
                 break;
             case "aviso":
                 Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                dialogoAviso.setTitle("Mensagem do Sistema");
+                dialogoAviso.setTitle("AVISO");
                 dialogoAviso.setHeaderText(cabecalho);
                 dialogoAviso.setContentText(info);
                 dialogoAviso.showAndWait();

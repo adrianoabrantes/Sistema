@@ -42,13 +42,15 @@ public class LoginController implements Initializable, ControlledScreen {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lblStatusLogin.setVisible(false);
         lblVersao.setText("Versao: 1.0");
-        Config confg = new Config();
-        
+        //Config confg = new Config();
         //System.out.println(confg.usuarioMaster("master", "master"));
 
     }
@@ -110,10 +112,6 @@ public class LoginController implements Initializable, ControlledScreen {
         pessoa.setUsuario(usuario);
         pessoa.setSenha(senha);
 
-        if (dao.login(pessoa)) {
-            return true;
-        } else {
-            return false;
-        }
+        return dao.login(pessoa);
     }
 }

@@ -1,9 +1,8 @@
-package DAO;
+package model;
 
 /**
  *
  * @author adrianoabrantesdeandrade
  */
-public class Sistema {
-    
+public class Configurar {
 }

@@ -13,36 +13,42 @@ import javafx.stage.Stage;
  */
 public class Login extends Application {
 
-    public static String screen1ID = "main";
-    public static String screen1File = "Login.fxml";
+    public static String screenLogin = "main";
+    public static String screenLoginFile = "Login.fxml";
     public static String screenHome = "home";
     public static String screenHomeFile = "Home.fxml";
     public static String screenUsuarios = "usuarios";
     public static String screenUsuariosFile = "Usuarios.fxml";
     public static String screenTabelaUsuarios = "Tabela";
     public static String screenTabelaUsuariosFile = "TabelaUsuarios.fxml";
-    public static String screenContasPagar = "ContasPagar.fxml";
-    public static String screenContasPagarFile = "ContasPagar.fxml";
-
+    public static String screenConfigurar = "configurar";
+    public static String screenConfigurarFile = "Configurar.fxml";
+    public static String screenLicenca = "licanca";
+    public static String screenLicencaFile = "Licenca.fxml";
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
         ScreensController mainContainer = new ScreensController();
 
-        mainContainer.loadScreen(Login.screen1ID, Login.screen1File);
+        mainContainer.loadScreen(Login.screenLogin, Login.screenLoginFile);
         mainContainer.loadScreen(Login.screenHome, Login.screenHomeFile);
         mainContainer.loadScreen(Login.screenUsuarios, Login.screenUsuariosFile);
         mainContainer.loadScreen(Login.screenTabelaUsuarios, Login.screenTabelaUsuariosFile);
-        mainContainer.loadScreen(Login.screenContasPagar, Login.screenContasPagarFile);
-        mainContainer.setScreen(Login.screen1ID);
+        mainContainer.loadScreen(Login.screenConfigurar, Login.screenConfigurarFile);
+        mainContainer.loadScreen(Login.screenLicenca, Login.screenLicencaFile);
+        mainContainer.setScreen(Login.screenLogin);
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        //primaryStage.setResizable(false);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
+    
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.effect.*?>
@@ -11,11 +12,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UsuariosController">
    <children>
-      <Pane fx:id="painelTabela" prefHeight="400.0" prefWidth="600.0">
+      <Pane fx:id="painelTabela" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <VBox prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <TableView fx:id="Tabela" prefHeight="400.0" prefWidth="600.0" />
+                  <TableView fx:id="tabela" prefHeight="400.0" prefWidth="600.0">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy></TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <JFXButton fx:id="btnVoltar" onAction="#eventoVoltar" prefWidth="90.0" text="Voltar" />
@@ -25,71 +29,124 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="painelUsuarios" layoutX="22.0" layoutY="23.0" prefHeight="351.0" prefWidth="551.0" style="-fx-background-color: #FFFFFF;">
+      <Pane fx:id="painelUsuarios" layoutX="22.0" layoutY="23.0" opacity="0.9" prefHeight="351.0" prefWidth="551.0" style="-fx-background-color: #FFFFFF;">
          <effect>
-            <DropShadow color="#ff5353" height="87.79" radius="42.635000000000005" spread="0.31" width="84.75" />
+            <DropShadow color="WHITE" height="85.13" radius="41.97" spread="0.31" width="84.75" />
          </effect>
          <children>
             <VBox layoutY="31.0" prefHeight="213.0" prefWidth="551.0">
                <children>
-                  <JFXTextField fx:id="txtNome" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Nome">
+                  <JFXTextField fx:id="txtNome" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Nome" unFocusColor="BLACK">
                      <VBox.margin>
                         <Insets bottom="3.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
                   </JFXTextField>
-                  <JFXTextField fx:id="txtUsuario" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Usuario">
+                  <JFXTextField fx:id="txtUsuario" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Usuario" unFocusColor="BLACK">
                      <VBox.margin>
                         <Insets bottom="3.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
                   </JFXTextField>
-                  <JFXPasswordField fx:id="txtSenha" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Senha">
+                  <JFXPasswordField fx:id="txtSenha" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Senha" unFocusColor="BLACK">
                      <VBox.margin>
                         <Insets bottom="3.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
                   </JFXPasswordField>
-                  <JFXPasswordField fx:id="txtConfSenha" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Confirmar Senha">
+                  <JFXPasswordField fx:id="txtConfSenha" disable="true" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Confirmar Senha" unFocusColor="BLACK">
                      <VBox.margin>
                         <Insets bottom="3.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
                   </JFXPasswordField>
+                  <HBox prefHeight="0.0" prefWidth="551.0">
+                     <children>
+                        <JFXRadioButton fx:id="rbAdministrador" disable="true" text="Administrador">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="rbUsuario" disable="true" selected="true" text="Usuario">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </JFXRadioButton>
+                     </children>
+                  </HBox>
                   <Label fx:id="lblStatus" text="Status" visible="false">
                      <VBox.margin>
                         <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox prefHeight="27.0" prefWidth="429.0">
+                  <HBox prefHeight="6.0" prefWidth="551.0">
                      <children>
                         <JFXButton fx:id="btnSalvar" onAction="#eventoSalvar" prefWidth="90.0" text="Novo">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </JFXButton>
                         <JFXButton fx:id="btnAlterar" onAction="#eventoAlterar" prefWidth="90.0" text="Alterar">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </JFXButton>
                         <JFXButton fx:id="btnExcluir" onAction="#eventoExcluir" prefWidth="90.0" text="Excluir">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </JFXButton>
-                        <JFXButton fx:id="btnCancelar" onAction="#eventoCancelar" prefWidth="90.0" text="Cancelar">
+                        <JFXButton fx:id="btnCancelar" onAction="#eventoCancelar" prefHeight="34.0" prefWidth="105.0" text="Cancelar">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </JFXButton>
-                        <JFXButton fx:id="btnListar" onAction="#eventoListar" prefWidth="90.0" text="Listar" />
-                        <JFXButton fx:id="btnSair" onAction="#eventoSair" prefWidth="90.0" text="Sair">
+                        <JFXButton fx:id="btnListar" onAction="#eventoListar" prefWidth="90.0" text="Listar">
+                           <font>
+                              <Font size="17.0" />
+                           </font></JFXButton>
+                        <JFXButton fx:id="btnSair" onAction="#eventoSair" prefWidth="90.0" text="Menu">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </JFXButton>
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <Label layoutX="209.0" layoutY="14.0" text="Cadastro de Usuarios" />
+            <Label layoutX="174.0" layoutY="1.0" text="Cadastro de Usuarios">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
          </children>
       </Pane>
    </children>
