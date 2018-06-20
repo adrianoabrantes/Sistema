@@ -9,10 +9,10 @@ import javafx.util.converter.LocalDateTimeStringConverter;
  *
  * @author adrianoabrantesdeandrade
  */
-public class Config {
+public class Configurar {
 
-    private LocalDateTimeStringConverter dataHora = new LocalDateTimeStringConverter();
-    private String data = dataHora.toString(LocalDateTime.of(LocalDate.now(), LocalTime.now()));
+    private final LocalDateTimeStringConverter dataHora = new LocalDateTimeStringConverter();
+    private final String data = dataHora.toString(LocalDateTime.of(LocalDate.now(), LocalTime.now()));
 
     public LocalDateTimeStringConverter getDataHora() {
         return dataHora;

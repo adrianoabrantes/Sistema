@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -54,7 +55,7 @@ public class LicencaController implements Initializable, ControlledScreen {
     }
 
     @FXML
-    private void eventoAtivarClick(ActionEvent event) {
+    private void eventoAtivarClick(ActionEvent event) throws IOException {
         if (txtLicenca.getText().isEmpty()) {
             txtLicenca.requestFocus();
         } else {

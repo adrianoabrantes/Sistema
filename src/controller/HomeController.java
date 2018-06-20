@@ -47,7 +47,7 @@ public class HomeController implements Initializable, ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         
         lblUltLogin.setEffect(new DropShadow(10, Color.WHITE));
-        lblUltLogin.setTextFill(Color.WHITE);
+        //lblUltLogin.setTextFill(Color.WHITE);
         btnUsuarios.setEffect(new DropShadow(10, Color.WHITE));
         btnConfigurar.setEffect(new DropShadow(10, Color.WHITE));
         btnEncerrar.setEffect(new DropShadow(10, Color.WHITE));  

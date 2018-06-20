@@ -51,8 +51,7 @@ public class SistemaDAO {
         } catch (SQLException ex) {
             System.out.println("ERRO: " + ex);
         }
-            return null;
+        return null;
 
     }
-
 }

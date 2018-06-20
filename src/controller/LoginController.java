@@ -16,7 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import model.Pessoa;
-import sistema.Config;
+import sistema.Configurar;
 import sistema.Login;
 
 /**
@@ -50,8 +50,7 @@ public class LoginController implements Initializable, ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         lblStatusLogin.setVisible(false);
         lblVersao.setText("Versao: 1.0");
-        //Config confg = new Config();
-        //System.out.println(confg.usuarioMaster("master", "master"));
+        System.out.println(new Configurar().usuarioMaster("master", "master"));
 
     }
 
@@ -70,7 +69,7 @@ public class LoginController implements Initializable, ControlledScreen {
             lblStatusLogin.setVisible(true);
             txtSenha.requestFocus();
         } else {
-            Config config = new Config();
+            Configurar config = new Configurar();
 
             if (txtUsuario.getText().equals("MASTER") && txtSenha.getText().equals(config.usuarioMaster(txtUsuario.getText(), txtSenha.getText()))) {
                 myController.setScreen(Login.screenHome);

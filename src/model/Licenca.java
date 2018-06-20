@@ -1,10 +1,16 @@
 package model;
 
+import java.io.IOException;
+import sistema.CriarArquivos;
+
 /**
  *
  * @author adrianoabrantesdeandrade
  */
 public class Licenca {
+
+    public Licenca() {
+    }
 
     private String chaveAtivacao;
     private boolean ativado;
@@ -17,7 +23,7 @@ public class Licenca {
         this.chaveAtivacao = chaveAtivacao;
     }
 
-    public boolean ativarChave() {
+    public boolean ativarChave() throws IOException {
         if (!chaveAtivacao.isEmpty()) {
             String[] chave = {chaveAtivacao.substring(0, 2), chaveAtivacao.substring(2, 4), chaveAtivacao.substring(4, 6), chaveAtivacao.substring(6, 8), chaveAtivacao.substring(8, 10)};
             int[] licanca = new int[5];
@@ -43,6 +49,8 @@ public class Licenca {
             if (soma % 2 == 0) {
                 raiz %= 2;
                 if (raiz > 1.77) {
+                    new CriarArquivos(".SisConf.cfg","config",CriarArquivos.TIPO.ARQUIVO);
+        
                     return true;
                 } else {
                     return false;
