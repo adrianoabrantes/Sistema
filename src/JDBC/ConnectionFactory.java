@@ -10,17 +10,33 @@ import sistema.Alertas;
  * @author adrianoabrantesdeandrade
  */
 public class ConnectionFactory {
+
     public Connection getConnection() {
+        String banco = "derby";
         String nomeUsuario = "sistema";
         String senhaUsuario = "sistema";
+        int porta = 1527;
         String enderecoBanco = "localhost";
         String nomeBanco = "sistema";
-
         try {
-           return DriverManager.getConnection("jdbc:derby://" + enderecoBanco + ":1527/" + nomeBanco, nomeUsuario, senhaUsuario);
-            } catch (SQLException ex) {
-         new Alertas().Alertas("erro", "Problema encontrado:", "Servidor nao encontrado. ERRO: " + ex);
+           return DriverManager.getConnection("jdbc:" + banco + "://" + enderecoBanco + ":" + porta + "/" + nomeBanco, nomeUsuario, senhaUsuario);
+        } catch (SQLException ex) {
+            new Alertas().Alertas("erro", "Problema encontrado:", "Servidor nao encontrado. ERRO: " + ex);
             throw new RuntimeException(ex);
         }
     }
+
+    public ConnectionFactory() {
+
+    }
+
+    ConnectionFactory(String banco, String nomeUsuario, String senhaUsuario, int porta, String enderecoBanco, String nomeBanco) {
+        try {
+            DriverManager.getConnection("jdbc:" + banco + "://" + enderecoBanco + ":" + porta + "/" + nomeBanco, nomeUsuario, senhaUsuario);
+        } catch (SQLException ex) {
+            new Alertas().Alertas("erro", "Problema encontrado:", "Servidor nao encontrado. ERRO: " + ex);
+            throw new RuntimeException(ex);
+        }
+    }
+
 }

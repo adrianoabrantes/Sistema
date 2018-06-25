@@ -1,8 +1,11 @@
 package sistema;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Calendar;
 import javafx.util.converter.LocalDateTimeStringConverter;
 
 /**
@@ -11,6 +14,7 @@ import javafx.util.converter.LocalDateTimeStringConverter;
  */
 public class Configurar {
 
+    private final String diretorioAtual = System.getProperty("user.dir");
     private final LocalDateTimeStringConverter dataHora = new LocalDateTimeStringConverter();
     private final String data = dataHora.toString(LocalDateTime.of(LocalDate.now(), LocalTime.now()));
 
@@ -45,4 +49,26 @@ public class Configurar {
         return "MASTER" + t1 + t2;
     }
 
+    public String getDiretorioAtual() {
+        return diretorioAtual;
+    }
+
+    public int calculoPeriodoAvaliacao() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar dataInicial = Calendar.getInstance();
+        Calendar dataAtual = Calendar.getInstance();
+        int dias = 0;
+        try {
+            dataInicial.setTime(sdf.parse(new LerArquivos().LerArquivos(".ini.dat", "config").substring(0, 10)));
+            dataAtual.setTime(sdf.parse(new Configurar().getData().substring(0, 10)));
+
+            dias = dataAtual.get(Calendar.DAY_OF_YEAR)
+                    - dataInicial.get(Calendar.DAY_OF_YEAR);
+            return 30 - dias;
+
+        } catch (ParseException ex) {
+            System.out.println("Dados invalidos " + ex);
+        }
+        return 30;
+    }
 }

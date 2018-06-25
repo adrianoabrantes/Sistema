@@ -9,7 +9,6 @@ import java.io.IOException;
  */
 public final class CriarArquivos {
 
-    private final String diretorioAtual = System.getProperty("user.dir");
     private String nome;
     private String local;
     private Enum tipo;
@@ -18,28 +17,30 @@ public final class CriarArquivos {
         DIRETORIO, ARQUIVO
     };
 
-    public CriarArquivos(String nome, String local, Enum tipo) throws IOException {
+    public CriarArquivos(String nome, String local, Enum tipo) {
         this.nome = nome;
 
         if (local.isEmpty()) {
-            this.local = diretorioAtual;
+            this.local = new Configurar().getDiretorioAtual();
         } else {
-            this.local = diretorioAtual + "/" + local;
+            this.local = new Configurar().getDiretorioAtual() + "/" + local;
         }
         this.tipo = tipo;
         criarArquivo();
     }
 
-    private void criarArquivo() throws IOException {
+    private void criarArquivo() {
         File arquivo = new File(local + "/" + nome);
+        try {
+            if (tipo.equals(TIPO.ARQUIVO)) {
+                arquivo.createNewFile();
 
-        if (tipo.equals(TIPO.ARQUIVO)) {
-            arquivo.createNewFile();
-            //System.out.println(local + "/" + nome);
+            } else {
+                arquivo.mkdir();
 
-        } else {
-            arquivo.mkdir();
-            //System.out.println(local + "/" + nome);
+            }
+        } catch (IOException ex) {
+            System.out.println("ERRO ao criar o arquivo " + nome +" ERRO: "+ ex);
         }
 
     }

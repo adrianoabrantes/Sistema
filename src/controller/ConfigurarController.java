@@ -22,9 +22,10 @@ public class ConfigurarController implements Initializable, ControlledScreen {
     private JFXButton btnVoltar;
     @FXML
     private JFXButton btnLicenca;
-
+    
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -38,13 +39,12 @@ public class ConfigurarController implements Initializable, ControlledScreen {
     }
 
     @FXML
-    private void eventoVoltarClick(ActionEvent event) {
-        myController.setScreen(Login.screenHome);
+    private void eventoVoltarClick(ActionEvent event) {     
+            myController.setScreen(Login.screenHome);
     }
 
     @FXML
     private void eventoLicencaClick(ActionEvent event) {
-        myController.setScreen(Login.screenLicenca);
+       myController.setScreen(Login.screenLicenca);
     }
-
 }

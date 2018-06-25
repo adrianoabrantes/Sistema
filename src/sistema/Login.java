@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * @author adrianoabrantesdeandrade
  */
 public class Login extends Application {
-    
+
     public static String screenLogin = "main";
     public static String screenLoginFile = "Login.fxml";
     public static String screenHome = "home";
@@ -26,11 +26,11 @@ public class Login extends Application {
     public static String screenConfigurarFile = "Configurar.fxml";
     public static String screenLicenca = "licanca";
     public static String screenLicencaFile = "Licenca.fxml";
-    
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         ScreensController mainContainer = new ScreensController();
-        
+
         mainContainer.loadScreen(Login.screenLogin, Login.screenLoginFile);
         mainContainer.loadScreen(Login.screenHome, Login.screenHomeFile);
         mainContainer.loadScreen(Login.screenUsuarios, Login.screenUsuariosFile);
@@ -40,14 +40,14 @@ public class Login extends Application {
         mainContainer.setScreen(Login.screenLogin);
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
-        
+
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         //primaryStage.setMaximized(true);
         primaryStage.show();
     }
-    
+
     public static void main(String[] args) throws IOException {
         launch(args);
     }
