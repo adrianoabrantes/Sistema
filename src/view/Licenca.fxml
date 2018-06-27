@@ -27,7 +27,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnAtivar" layoutX="389.0" layoutY="101.0" onAction="#eventoAtivarClick" text="ATIVAR">
+            <JFXButton fx:id="btnAtivar" layoutX="389.0" layoutY="101.0" onAction="#eventoAtivarClick" text="Ativar">
                <font>
                   <Font size="17.0" />
                </font></JFXButton>

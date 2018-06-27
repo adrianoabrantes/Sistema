@@ -87,6 +87,8 @@ public class LoginController implements Initializable, ControlledScreen {
                         if (new Configurar().calculoPeriodoAvaliacao() > 30 || new Configurar().calculoPeriodoAvaliacao() <= 0) {
                             new Alertas().Alertas("erro", "ERRO DE ATIVACAO", "Chave de acesso nao encontrada, ou expirada!\nContate o suporte (11)94794-1116.\nabrantessistemas@gmail.com");
                             System.exit(0);
+                        }else{
+                             myController.setScreen(Login.screenHome);
                         }
                     } else {
                         myController.setScreen(Login.screenHome);

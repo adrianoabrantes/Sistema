@@ -67,6 +67,8 @@ public class LicencaController implements Initializable, ControlledScreen {
         if (btnAtivar.getText().equals("Ativar")) {
             if (txtLicenca.getText().isEmpty()) {
                 txtLicenca.requestFocus();
+            } else if (txtLicenca.getLength() != 10) {
+                txtLicenca.requestFocus();
             } else {
                 licenca.setChaveAtivada(txtLicenca.getText());
                 if (licenca.calcularLicenca()) {
@@ -74,7 +76,10 @@ public class LicencaController implements Initializable, ControlledScreen {
                     PainelAtivacao.setVisible(true);
                     lblStatus.setTextFill(Paint.valueOf("#00BFFF"));
                     lblStatus.setText("ATIVADO");
+                    txtLicenca.setDisable(true);
+                    btnAtivar.setText("Alterar");
                     lblPeriodo.setVisible(false);
+
                 } else {
                     lblEstadoChave.setText("Chave invalida! Contate o Suporte.");
                     lblEstadoChave.setVisible(true);
@@ -97,6 +102,7 @@ public class LicencaController implements Initializable, ControlledScreen {
 
     @FXML
     private void eventoVoltarClick(ActionEvent event) {
+        lblEstadoChave.setVisible(false);
         myController.setScreen(Login.screenConfigurar);
     }
 
@@ -115,6 +121,12 @@ public class LicencaController implements Initializable, ControlledScreen {
 
     @FXML
     private void eventoConcluirClick(ActionEvent event) {
+        txtLicenca.setText((new LerArquivos().LerArquivos(".licenca.cfg", "config")
+                .substring(0, 2) + "-" + new LerArquivos().LerArquivos(".licenca.cfg", "config")
+                .substring(2, 4) + "-" + new LerArquivos().LerArquivos(".licenca.cfg", "config")
+                .substring(4, 6) + "-" + new LerArquivos().LerArquivos(".licenca.cfg", "config")
+                .substring(6, 8) + "-" + new LerArquivos().LerArquivos(".licenca.cfg", "config")
+                .substring(8, 10)).toUpperCase());
         PainelAtivacao.setVisible(false);
     }
 
