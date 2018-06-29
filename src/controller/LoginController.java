@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -82,13 +83,13 @@ public class LoginController implements Initializable, ControlledScreen {
             } else {
                 if (validarUsuario(txtUsuario.getText(), txtSenha.getText())) {
                     File licenca = new File(new Configurar().getDiretorioAtual() + "/config/.licenca.cfg");
-                    
+
                     if (!licenca.exists()) {
                         if (new Configurar().calculoPeriodoAvaliacao() > 30 || new Configurar().calculoPeriodoAvaliacao() <= 0) {
                             new Alertas().Alertas("erro", "ERRO DE ATIVACAO", "Chave de acesso nao encontrada, ou expirada!\nContate o suporte (11)94794-1116.\nabrantessistemas@gmail.com");
                             System.exit(0);
-                        }else{
-                             myController.setScreen(Login.screenHome);
+                        } else {
+                            myController.setScreen(Login.screenHome);
                         }
                     } else {
                         myController.setScreen(Login.screenHome);
@@ -136,11 +137,42 @@ public class LoginController implements Initializable, ControlledScreen {
         new CriarArquivos("config", "", TIPO.DIRETORIO);
 
         String nomeArquivo = ".ini.dat";
-        File arqu = new File(new Configurar().getDiretorioAtual() + "/config/" + nomeArquivo);
+        File ini_dat = new File(new Configurar().getDiretorioAtual() + "/config/" + nomeArquivo);
 
-        if (!arqu.exists()) {
+        if (!ini_dat.exists()) {
+            Random r = new Random();
+            String[] key = new String[1000];
             new CriarArquivos(nomeArquivo, "config", TIPO.ARQUIVO);
-            new EscreverArquivo(nomeArquivo, "config", new Configurar().getData().toString());
+
+            for (int i = 0; i < key.length; i++) {
+                switch (i) {
+                    case 12:
+                        key[i] = new Configurar().getData().substring(0, 2);
+                        continue;
+                    case 32:
+                        key[i] = new Configurar().getData().substring(3, 5);
+
+                        continue;
+                    case 55:
+                        key[i] = new Configurar().getData().substring(6, 8);
+
+                        continue;
+                    case 67:
+                        key[i] = new Configurar().getData().substring(8, 10);
+
+                        continue;
+                }
+                key[i] = String.valueOf(r.nextInt(9));
+
+            }
+
+            String cripto = "";
+            for (String k : key) {
+                cripto += k;
+            }
+
+            new EscreverArquivo(nomeArquivo, "config", cripto);
         }
     }
+
 }

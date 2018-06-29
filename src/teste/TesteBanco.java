@@ -1,4 +1,4 @@
-package sistema;
+package teste;
 
 import DAO.PessoaDAO;
 import java.sql.SQLException;

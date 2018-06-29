@@ -57,9 +57,14 @@ public class Configurar {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Calendar dataInicial = Calendar.getInstance();
         Calendar dataAtual = Calendar.getInstance();
+        String arquivo = ".ini.dat";
         int dias = 0;
+        
         try {
-            dataInicial.setTime(sdf.parse(new LerArquivos().LerArquivos(".ini.dat", "config").substring(0, 10)));
+            dataInicial.setTime(sdf.parse(new LerArquivos().LerArquivos(arquivo, "config").substring(12, 14)
+                    + "/" + new LerArquivos().LerArquivos(arquivo, "config").substring(33, 35)
+                    + "/" + new LerArquivos().LerArquivos(arquivo, "config").substring(57, 59)
+                    + new LerArquivos().LerArquivos(arquivo, "config").substring(70, 72)));
             dataAtual.setTime(sdf.parse(new Configurar().getData().substring(0, 10)));
 
             dias = dataAtual.get(Calendar.DAY_OF_YEAR)

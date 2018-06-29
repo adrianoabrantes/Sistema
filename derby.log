@@ -1,0 +1,31 @@
+Fri Jun 29 18:13:25 BRT 2018 : Apache Derby Servidor de Rede - 10.13.1.1 - (Unversioned directory) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+----------------------------------------------------------------
+Fri Jun 29 18:13:25 BRT 2018:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instância a816c00e-0164-4d64-baf3-00002b26a1b2
+no diretório de banco de dados /Users/adrianoabrantesdeandrade/NetBeansProjects/Sistema/sistema 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_151-b12
+user.dir=/Applications/NetBeans/glassfish5/javadb
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.13.5
+derby.system.home=/Users/adrianoabrantesdeandrade/NetBeansProjects/Sistema
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Fri Jun 29 18:13:26 BRT 2018:
+Encerrando a instância a816c00e-0164-4d64-baf3-00002b26a1b2
+Fri Jun 29 18:13:26 BRT 2018 Thread[DRDAConnThread_3,5,main] (DATABASE = sistema), (DRDAID = {2}), Banco de dados 'sistema' fechado.
+----------------------------------------------------------------
+Fri Jun 29 18:13:57 BRT 2018:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instância 6ede40af-0164-4d64-baf3-00002b26a1b2
+no diretório de banco de dados /Users/adrianoabrantesdeandrade/NetBeansProjects/Sistema/sistema 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_151-b12
+user.dir=/Applications/NetBeans/glassfish5/javadb
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.13.5
+derby.system.home=/Users/adrianoabrantesdeandrade/NetBeansProjects/Sistema
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
