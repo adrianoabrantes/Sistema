@@ -23,6 +23,11 @@
                            <font>
                               <Font size="17.0" />
                            </font></JFXButton>
+                        <JFXButton fx:id="btnFundo" onAction="#eventoFundoClick" text="Fundo">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </JFXButton>
                         <JFXButton fx:id="btnVoltar" onAction="#eventoVoltarClick" text="Voltar">
                            <HBox.margin>
                               <Insets left="320.0" />
