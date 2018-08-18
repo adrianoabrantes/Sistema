@@ -11,8 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import sistema.Login;
 import view.ControlledScreen;
@@ -36,7 +34,7 @@ public class HomeController implements Initializable, ControlledScreen {
     @FXML
     private JFXButton btnEncerrar;
     @FXML
-    private JFXButton btnConfigurar;
+    private JFXButton btnAtivacao;
 
     /**
      * Initializes the controller class.
@@ -46,12 +44,7 @@ public class HomeController implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        lblUltLogin.setEffect(new DropShadow(10, Color.WHITE));
-        //lblUltLogin.setTextFill(Color.WHITE);
-        btnUsuarios.setEffect(new DropShadow(10, Color.WHITE));
-        btnConfigurar.setEffect(new DropShadow(10, Color.WHITE));
-        btnEncerrar.setEffect(new DropShadow(10, Color.WHITE));  
-        KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHora());
+       KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHora());
         
         Timeline timeline = new Timeline(frame);
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -80,7 +73,7 @@ public class HomeController implements Initializable, ControlledScreen {
     }
 
     @FXML
-    private void eventoConfigurar(ActionEvent event) {
-        myController.setScreen(Login.screenConfigurar);
+    private void eventoAtivacaoClick(ActionEvent event) {
+        myController.setScreen(Login.screenLicenca);
     }
 }

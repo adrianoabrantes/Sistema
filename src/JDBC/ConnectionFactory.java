@@ -21,7 +21,7 @@ public class ConnectionFactory {
         try {
            return DriverManager.getConnection("jdbc:" + banco + "://" + enderecoBanco + ":" + porta + "/" + nomeBanco, nomeUsuario, senhaUsuario);
         } catch (SQLException ex) {
-            new Alertas().Alertas("erro", "Problema encontrado:", "Servidor nao encontrado. ERRO: " + ex);
+            new Alertas().Erro("Problema encontrado:", "Servidor nao encontrado. ERRO: " + ex);
             throw new RuntimeException(ex);
         }
     }
@@ -34,7 +34,7 @@ public class ConnectionFactory {
         try {
             DriverManager.getConnection("jdbc:" + banco + "://" + enderecoBanco + ":" + porta + "/" + nomeBanco, nomeUsuario, senhaUsuario);
         } catch (SQLException ex) {
-            new Alertas().Alertas("erro", "Problema encontrado:", "Servidor nao encontrado. ERRO: " + ex);
+            new Alertas().Erro("Problema encontrado:", "Servidor nao encontrado. ERRO: " + ex);
             throw new RuntimeException(ex);
         }
     }

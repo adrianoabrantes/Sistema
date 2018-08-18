@@ -33,11 +33,11 @@ public class PessoaDAO {
             prepareStatement.execute();
             prepareStatement.close();
             con.close();
-            new Alertas().Alertas("info", "Resumo", pessoa.getNome() + " salvo com sucesso.");
+            new Alertas().Informativo("Resumo", pessoa.getNome() + " salvo com sucesso.");
             return true;
 
         } catch (SQLException ex) {
-            new Alertas().Alertas("erro", "Problema encontrado:", "Erro ao cadastrar: " + pessoa.getNome() + " ERRO: " + ex);
+            new Alertas().Erro("Problema encontrado:", "Erro ao cadastrar: " + pessoa.getNome() + " ERRO: " + ex);
             return false;
         }
     }
@@ -63,7 +63,7 @@ public class PessoaDAO {
                 return true;
 
             } catch (SQLException ex) {
-                new Alertas().Alertas("erro", "Problema encontrado:", "Erro ao alterar: " + pessoa.getNome() + " ERRO: " + ex);
+                new Alertas().Erro("Problema encontrado:", "Erro ao alterar: " + pessoa.getNome() + " ERRO: " + ex);
                 prepareStatement.close();
                 con.close();
                 return false;
@@ -140,7 +140,7 @@ public class PessoaDAO {
             con.close();
 
         } catch (Exception e) {
-            new Alertas().Alertas("erro", "Problema encontrado:", "Erro ao carregar dados da tabela Pessoa ERRO: " + e);
+            new Alertas().Erro("Problema encontrado:", "Erro ao carregar dados da tabela Pessoa ERRO: " + e);
             return null;
         }
         return pessoas;
@@ -162,7 +162,7 @@ public class PessoaDAO {
                 return false;
             }
         } catch (SQLException ex) {
-            new Alertas().Alertas("erro", "Problema encontrado:", "ERRO: " + ex);
+            new Alertas().Erro("Problema encontrado:", "ERRO: " + ex);
             return false;
 
         }
@@ -183,7 +183,7 @@ public class PessoaDAO {
                 return false;
             }
         } catch (SQLException ex) {
-            new Alertas().Alertas("erro", "Problema encontrado:", "ERRO: " + ex);
+            new Alertas().Erro("Problema encontrado:", "ERRO: " + ex);
             return false;
 
         }

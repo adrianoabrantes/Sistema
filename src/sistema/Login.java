@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  */
 public class Login extends Application {
 
-    public static String screenLogin = "main";
+    public static String screenLogin = "login";
     public static String screenLoginFile = "Login.fxml";
     public static String screenHome = "home";
     public static String screenHomeFile = "Home.fxml";
@@ -22,8 +22,6 @@ public class Login extends Application {
     public static String screenUsuariosFile = "Usuarios.fxml";
     public static String screenTabelaUsuarios = "Tabela";
     public static String screenTabelaUsuariosFile = "TabelaUsuarios.fxml";
-    public static String screenConfigurar = "configurar";
-    public static String screenConfigurarFile = "Configurar.fxml";
     public static String screenLicenca = "licanca";
     public static String screenLicencaFile = "Licenca.fxml";
 
@@ -35,7 +33,6 @@ public class Login extends Application {
         mainContainer.loadScreen(Login.screenHome, Login.screenHomeFile);
         mainContainer.loadScreen(Login.screenUsuarios, Login.screenUsuariosFile);
         mainContainer.loadScreen(Login.screenTabelaUsuarios, Login.screenTabelaUsuariosFile);
-        mainContainer.loadScreen(Login.screenConfigurar, Login.screenConfigurarFile);
         mainContainer.loadScreen(Login.screenLicenca, Login.screenLicencaFile);
         mainContainer.setScreen(Login.screenLogin);
         Group root = new Group();

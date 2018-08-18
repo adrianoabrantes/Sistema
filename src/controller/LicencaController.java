@@ -39,12 +39,7 @@ public class LicencaController implements Initializable, ControlledScreen {
     private Label lblPeriodo;
     @FXML
     private JFXButton btnVoltar;
-    @FXML
     private Pane PainelAtivacao;
-    @FXML
-    private JFXButton btnConcluir;
-    @FXML
-    private JFXButton btnCancelar;
 
     Licenca licenca = new Licenca();
 
@@ -103,7 +98,7 @@ public class LicencaController implements Initializable, ControlledScreen {
     @FXML
     private void eventoVoltarClick(ActionEvent event) {
         lblEstadoChave.setVisible(false);
-        myController.setScreen(Login.screenConfigurar);
+        myController.setScreen(Login.screenHome);
     }
 
     @FXML
@@ -119,7 +114,6 @@ public class LicencaController implements Initializable, ControlledScreen {
         txtLicenca.setText("");
     }
 
-    @FXML
     private void eventoConcluirClick(ActionEvent event) {
         txtLicenca.setText((new LerArquivos().LerArquivos(".licenca.cfg", "config")
                 .substring(0, 2) + "-" + new LerArquivos().LerArquivos(".licenca.cfg", "config")
@@ -130,7 +124,6 @@ public class LicencaController implements Initializable, ControlledScreen {
         PainelAtivacao.setVisible(false);
     }
 
-    @FXML
     private void eventoCancelarClick(ActionEvent event) {
         licenca.setChaveAtivada("");
         txtLicenca.setText("");

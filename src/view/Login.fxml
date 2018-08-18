@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
@@ -9,52 +10,71 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-   <children>
-      <Pane layoutX="103.0" layoutY="72.0" opacity="0.9" prefHeight="257.0" prefWidth="395.0" style="-fx-background-color: #FFFFFF;">
+<BorderPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <center>
+      <VBox layoutX="300.0" layoutY="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="62.0" layoutY="54.0" prefHeight="140.0" prefWidth="271.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/circuit-board.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="400.0" top="30.0" />
+               </VBox.margin>
+            </ImageView>
+            <JFXTextField fx:id="txtUsuario" focusColor="#fa652e" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Usuario ..." unFocusColor="#6400ff">
+               <VBox.margin>
+                  <Insets left="300.0" right="300.0" top="150.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXPasswordField fx:id="txtSenha" focusColor="#fa652e" labelFloat="true" onKeyPressed="#eventoKeyPressed" promptText="Senha ..." unFocusColor="#6400ff">
+               <VBox.margin>
+                  <Insets left="300.0" right="300.0" top="10.0" />
+               </VBox.margin>
+            </JFXPasswordField>
+            <Label fx:id="lblStatusLogin" text="Status Login" textFill="#fa652e">
+               <VBox.margin>
+                  <Insets left="310.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="50.0" prefWidth="440.0">
                <children>
-                  <JFXTextField fx:id="txtUsuario" labelFloat="true" onKeyPressed="#keyPressed" promptText="Usuario ...">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </JFXTextField>
-                  <JFXPasswordField fx:id="txtSenha" labelFloat="true" onKeyPressed="#keyPressed" promptText="Senha ...">
-                     <VBox.margin>
+                  <JFXButton fx:id="btnEnviar" onAction="#eventoEnviar" prefHeight="50.0" prefWidth="200.0" text="Enviar" textFill="#6400ff">
+                     <HBox.margin>
                         <Insets />
-                     </VBox.margin>
-                  </JFXPasswordField>
-                  <Label fx:id="lblStatusLogin" text="Status Login">
-                     <VBox.margin>
-                        <Insets bottom="20.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <HBox prefHeight="44.0" prefWidth="271.0">
-                     <children>
-                        <JFXButton fx:id="btnEntrar" onAction="#EntrarEventoCick" prefWidth="90.0" text="Entrar">
-                           <HBox.margin>
-                              <Insets right="50.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                        <JFXButton fx:id="btnSair" onAction="#SairEventoClick" prefWidth="90.0" text="Sair">
-                           <HBox.margin>
-                              <Insets left="50.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                     </children>
-                  </HBox>
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCancelar" onAction="#eventoCancelar" prefHeight="50.0" prefWidth="200.0" text="Cancelar" textFill="#6400ff">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
                </children>
-            </VBox>
-            <Label layoutX="142.0" layoutY="6.0" text="Sistema Gerencial" />
+               <VBox.margin>
+                  <Insets left="300.0" right="300.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
          </children>
          <effect>
-            <DropShadow color="#d0c7c7" height="160.0" radius="79.5" spread="0.3" width="160.0" />
+            <DropShadow color="#6400ff" />
          </effect>
-      </Pane>
-      <Label fx:id="lblVersao" layoutX="2.0" layoutY="383.0" text="Versao:">
-         <padding>
-            <Insets left="10.0" />
-         </padding></Label>
-   </children>
-</AnchorPane>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="30.0" right="30.0" top="30.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox prefHeight="0.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="COPYRIGHT © ABRANTES SISTEMAS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="30.0" right="30.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+</BorderPane>

@@ -39,12 +39,11 @@ public class LoginController implements Initializable, ControlledScreen {
     private JFXPasswordField txtSenha;
     @FXML
     private Label lblStatusLogin;
+
     @FXML
-    private JFXButton btnEntrar;
+    private JFXButton btnEnviar;
     @FXML
-    private JFXButton btnSair;
-    @FXML
-    private Label lblVersao;
+    private JFXButton btnCancelar;
 
     /**
      * Initializes the controller class.
@@ -56,71 +55,13 @@ public class LoginController implements Initializable, ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         criarArquivoConfiguracao();
         lblStatusLogin.setVisible(false);
-        lblVersao.setText("Versao: 1.0");
+
         System.out.println(new Configurar().usuarioMaster("master", "master"));
 
     }
 
-    @FXML
-    private void EntrarEventoCick() {
-
-        if (txtUsuario.getText().isEmpty()) {
-            lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
-            lblStatusLogin.setText("Campo usuario nao podem estar vazios.");
-            lblStatusLogin.setVisible(true);
-            txtUsuario.requestFocus();
-
-        } else if (txtSenha.getText().isEmpty()) {
-            lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
-            lblStatusLogin.setText("Campo Senha nao podem estar vazios.");
-            lblStatusLogin.setVisible(true);
-            txtSenha.requestFocus();
-        } else {
-
-            if (txtUsuario.getText().equals("MASTER") && txtSenha.getText().equals(new Configurar().usuarioMaster(txtUsuario.getText(), txtSenha.getText()))) {
-                myController.setScreen(Login.screenHome);
-
-            } else {
-                if (validarUsuario(txtUsuario.getText(), txtSenha.getText())) {
-                    File licenca = new File(new Configurar().getDiretorioAtual() + "/config/.licenca.cfg");
-
-                    if (!licenca.exists()) {
-                        if (new Configurar().calculoPeriodoAvaliacao() > 30 || new Configurar().calculoPeriodoAvaliacao() <= 0) {
-                            new Alertas().Alertas("erro", "ERRO DE ATIVACAO", "Chave de acesso nao encontrada, ou expirada!\nContate o suporte (11)94794-1116.\nabrantessistemas@gmail.com");
-                            System.exit(0);
-                        } else {
-                            myController.setScreen(Login.screenHome);
-                        }
-                    } else {
-                        myController.setScreen(Login.screenHome);
-                    }
-                } else {
-                    lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
-                    lblStatusLogin.setVisible(true);
-                    lblStatusLogin.setText("Usuario ou senha invalido.");
-                }
-            }
-        }
-    }
-
-    @FXML
-    private void keyPressed(KeyEvent event
-    ) {
-        lblStatusLogin.setVisible(false);
-        if (event.getCode() == KeyCode.ENTER) {
-            EntrarEventoCick();
-        }
-    }
-
-    @FXML
-    private void SairEventoClick(ActionEvent event
-    ) {
-        System.exit(0);
-    }
-
     @Override
-    public void setScreenParent(ScreensController screenPage
-    ) {
+    public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
     }
 
@@ -172,6 +113,61 @@ public class LoginController implements Initializable, ControlledScreen {
             }
 
             new EscreverArquivo(nomeArquivo, "config", cripto);
+        }
+    }
+
+    @FXML
+    private void eventoEnviar() {
+
+        if (txtUsuario.getText().isEmpty()) {
+            lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
+            lblStatusLogin.setText("Campo usuario nao podem estar vazios.");
+            lblStatusLogin.setVisible(true);
+            txtUsuario.requestFocus();
+
+        } else if (txtSenha.getText().isEmpty()) {
+            lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
+            lblStatusLogin.setText("Campo Senha nao podem estar vazios.");
+            lblStatusLogin.setVisible(true);
+            txtSenha.requestFocus();
+        } else {
+
+            if (txtUsuario.getText().equals("MASTER") && txtSenha.getText().equals(new Configurar().usuarioMaster(txtUsuario.getText(), txtSenha.getText()))) {
+                myController.setScreen(Login.screenHome);
+
+            } else {
+                if (validarUsuario(txtUsuario.getText(), txtSenha.getText())) {
+                    File licenca = new File(new Configurar().getDiretorioAtual() + "/config/.licenca.cfg");
+
+                    if (!licenca.exists()) {
+                        if (new Configurar().calculoPeriodoAvaliacao() > 30 || new Configurar().calculoPeriodoAvaliacao() <= 0) {
+                            new Alertas().Erro("ERRO DE ATIVACAO", "Chave de acesso nao encontrada, ou expirada!\nContate o suporte (11)94794-1116.\nabrantessistemas@gmail.com");
+                            System.exit(0);
+                        } else {
+                            myController.setScreen(Login.screenHome);
+                        }
+                    } else {
+                        myController.setScreen(Login.screenHome);
+                    }
+                } else {
+                    lblStatusLogin.setTextFill(Paint.valueOf("#FF0000"));
+                    lblStatusLogin.setVisible(true);
+                    lblStatusLogin.setText("Usuario ou senha invalido.");
+                }
+            }
+        }
+    }
+
+    @FXML
+    private void eventoCancelar(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    private void eventoKeyPressed(KeyEvent event) {
+        lblStatusLogin.setVisible(false);
+        if (event.getCode() == KeyCode.ENTER) {
+            eventoEnviar();
         }
     }
 

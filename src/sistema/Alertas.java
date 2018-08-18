@@ -11,31 +11,30 @@ public class Alertas {
     public Alertas() {
     }
 
-    public void Alertas(String titulo, String cabecalho, String info) {
-        switch (titulo) {
-            case "info":
-                Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
-                dialogoInfo.setTitle("INFORMATIVA");
-                dialogoInfo.setHeaderText(cabecalho);
-                dialogoInfo.setContentText(info);
-                dialogoInfo.showAndWait();
-                break;
-            case "erro":
-                Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
-                dialogoErro.setTitle("ERRO");
-                dialogoErro.setHeaderText(cabecalho);
-                dialogoErro.setContentText(info);
-                dialogoErro.showAndWait();
-                break;
-            case "aviso":
-                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                dialogoAviso.setTitle("AVISO");
-                dialogoAviso.setHeaderText(cabecalho);
-                dialogoAviso.setContentText(info);
-                dialogoAviso.showAndWait();
-                break;
+    public void Informativo(String cabecalho, String info) {
+        Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+        dialogoInfo.setTitle("INFORMATIVO");
+        dialogoInfo.setHeaderText(cabecalho);
+        dialogoInfo.setContentText(info);
+        dialogoInfo.showAndWait();
+    }
 
-        }
+    public void Erro(String cabecalho, String info) {
+        Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
+        dialogoErro.setTitle("ERRO");
+        dialogoErro.setHeaderText(cabecalho);
+        dialogoErro.setContentText(info);
+        dialogoErro.showAndWait();
+
+    }
+
+    public void Aviso(String cabecalho, String info) {
+        Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+        dialogoAviso.setTitle("AVISO");
+        dialogoAviso.setHeaderText(cabecalho);
+        dialogoAviso.setContentText(info);
+        dialogoAviso.showAndWait();
+
     }
 
 }
